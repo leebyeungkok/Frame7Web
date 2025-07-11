@@ -1,0 +1,110 @@
+{
+	"name": "frame7-web",
+	"displayName": "Frame7 Web",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.91.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"title": "Open visual editor",
+				"command": "frame7-web.openVisualEditor",
+				"category": "Frame7 Web"
+			},
+			{
+				"title": "Back to file",
+				"command": "frame7-web.backToFile",
+				"category": "Frame7 Web"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "frame7-web.openVisualEditor",
+					"when": "editorLangId == javascript"
+				},
+				{
+					"command": "frame7-web.backToFile",
+					"when": "activeWebviewPanelId == frame7-web.VisualEditor"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "frame7-web.openVisualEditor",
+					"when": "resourceLangId == javascript",
+					"group": "navigation"
+				},
+				{
+					"command": "frame7-web.backToFile",
+					"when": "activeWebviewPanelId == frame7-web.VisualEditor",
+					"group": "navigation"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./snippets/javascript.jsonc"
+			}
+		],
+		"configuration": {
+			"title": "Frame7 Web",
+			"properties": {
+				"frame7-web.closeVisualEditorWithDocument": {
+					"description": "Automatically close the visual editor when the original document closes",
+					"type": "boolean",
+					"default": false
+				},
+				"frame7-web.visualEditorUri": {
+					"description": "Fallback Uri that points to a visual editor html file. Can be overridden with va-config.json",
+					"type": "string",
+					"default": "http://localhost:5050"
+				},
+				"frame7-web.visualEditorColumn": {
+					"description": "Which column the visual editor should default to",
+					"type": "string",
+					"enum": [
+						"active",
+						"beside",
+						"one",
+						"two",
+						"three",
+						"four",
+						"five",
+						"six",
+						"seven",
+						"eight",
+						"nine"
+					],
+					"default": "active"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.91.0",
+		"@types/mocha": "^10.0.7",
+		"@types/node": "20.x",
+		"@typescript-eslint/eslint-plugin": "^7.14.1",
+		"@typescript-eslint/parser": "^7.11.0",
+		"eslint": "^8.57.0",
+		"typescript": "^5.4.5",
+		"@vscode/test-cli": "^0.0.9",
+		"@vscode/test-electron": "^2.4.0"
+	}
+}

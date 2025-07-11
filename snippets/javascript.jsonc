@@ -1,0 +1,46 @@
+{
+	"Va.View": {
+		"prefix": [
+			"createVaView"
+		],
+		"body": [
+			"class $TM_FILENAME_BASE extends Va.View {",
+			"\tmounted(){",
+			"\t}",
+			"\tconfig() {",
+			"\t\treturn ({",
+			"\t\t$0",
+			"\t\t})",
+			"\t}",
+			"}"
+		],
+		"description": "Va.View",
+		"isFileTemplate": true
+	},
+	"Va.Button": {
+		"prefix": [
+			"tagVaButton"
+		],
+		"body": [
+			"{",
+			"\ttagName: 'button',",
+			"\ttext: '${0:button},'",
+			"},"
+		],
+		"description": "Va.Button",
+		"isFileTemplate": false
+	},
+	"Va.ButtonClick": {
+		"prefix": [
+			"eventVaButtonClick"
+		],
+		"body": [
+			"onClick (button, element, evt){",
+			"$0",
+			"}"
+		],
+		"description": "Va.Button",
+		"isFileTemplate": false
+	}
+
+}
