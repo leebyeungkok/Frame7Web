@@ -24,6 +24,12 @@ export function backToFile(context: vscode.ExtensionContext) {
 			This is an extension bug.`);
 	}
 }
+
+export function undo(context: vscode.ExtensionContext){
+	if (EditorPanel.currentPanel) {
+		EditorPanel.currentPanel.undo();
+	}
+}
 /*
 const getFileList = async (path: string) => {
 	let strRootPath:string = vscode.workspace.workspaceFolders[0].uri.fsPath;
@@ -89,7 +95,6 @@ export class EditorPanel {
 					this.writeDiagramTemplateFile(e.text);
 					break;
 				case 'writeDiagramComponent':
-					//console.log('여기1');
 					this.writeDiagramComponentFile(e.text);
 					break;				
 				case 'retrieve':
@@ -106,15 +111,7 @@ export class EditorPanel {
 
 		this.panel.onDidChangeViewState(_ => { this.handleViewStateChange(); });
 		this.handleViewStateChange();
-		/*
-		const changeDocumentEvent =
-			vscode.workspace.onDidChangeTextDocument(e => {
-				if (e.document.uri.fsPath === this.document.uri.fsPath) {
-					this.document = e.document;
-					this.update('change');
-				}
-			});
-		*/
+
 		const closeDocumentEvent =
 			vscode.workspace.onDidCloseTextDocument(e => {
 				if (e === this.document) {
@@ -209,6 +206,13 @@ export class EditorPanel {
 		}
 	}
 
+	public undo() : void {
+		this.panel.webview.postMessage({
+			type: 'commmand',
+			command: 'undo',
+		})
+	}
+
 	private static createPanel(panelName: string, extensionUri: vscode.Uri): vscode.WebviewPanel {
 		const column = EditorPanel.getActiveColumn();
 		
@@ -243,7 +247,7 @@ export class EditorPanel {
 			updateType: updateType,
 			text: this.document.getText(),
 		});
-	}
+	} 
 
 	private static openHtml(
 		extensionUri: vscode.Uri, webview: vscode.Webview

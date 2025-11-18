@@ -19,6 +19,12 @@
 				"title": "Open Frame7 Designer",
 				"command": "frame7-web.openVisualEditor",
 				"category": "Frame7 Web"
+			},
+			{
+				"title": "Go back to file",
+				"command": "frame7-web.backToFile",
+				"category": "Frame7 Web"
+				
 			}
 		],
 		"menus": {
