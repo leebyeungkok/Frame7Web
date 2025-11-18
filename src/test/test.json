@@ -1,0 +1,126 @@
+{
+	"Va.ProgressBarFocus": {
+		"prefix": [
+			"va_eventProgressBarFocus"
+		],
+		"body": [
+			"onProgressBarFocus (progressbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar focus",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarBlur": {
+		"prefix": [
+			"va_eventProgressBarBlur"
+		],
+		"body": [
+			"onProgressBarBlur (progressbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar blur",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarClick": {
+		"prefix": [
+			"va_eventProgressBarClick"
+		],
+		"body": [
+			"onProgressBarClick (progressbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar click",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarContextmenu": {
+		"prefix": [
+			"va_eventProgressBarContextmenu"
+		],
+		"body": [
+			"onProgressBarContextmenu (progressbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarChange": {
+		"prefix": [
+			"va_eventProgressBarChange"
+		],
+		"body": [
+			"onProgressBarChange (progressbar, element, checked, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar change",
+		"isFileTemplate": false
+	},
+
+	"Va.ProgressBarKeydown": {
+		"prefix": [
+			"va_eventProgressBarKeydown"
+		],
+		"body": [
+			"onProgressBarKeydown (progressbar, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar keydown",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarKeyup": {
+		"prefix": [
+			"va_eventProgressBarKeyup"
+		],
+		"body": [
+			"onProgressBarKeyup (progressbar, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.ProgressBarSelect": {
+		"prefix": [
+			"va_eventProgressBarSelect"
+		],
+		"body": [
+			"onProgressBarSelect (progressbar, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar select",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarExpand": {
+		"prefix": [
+			"va_eventProgressBarExpand"
+		],
+		"body": [
+			"onProgressBarExpand (progressbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar expand",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarCollapse": {
+		"prefix": [
+			"va_eventProgressBarCollapse"
+		],
+		"body": [
+			"onProgressBarCollapse (progressbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar collapse",
+		"isFileTemplate": false
+	}
+}

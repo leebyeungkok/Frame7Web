@@ -1,46 +1,6054 @@
+
 {
 	"Va.View": {
 		"prefix": [
-			"createVaView"
+			"va_createArticle"
 		],
 		"body": [
-			"class $TM_FILENAME_BASE extends Va.View {",
+			"import Va from '../../../lib/va.js';",
+			"export default class $TM_FILENAME_BASE extends Va.View {",
+			"\tconstructor(){",
+			"\t\tsuper(arguments);",
+			"\t}",
 			"\tmounted(){",
 			"\t}",
 			"\tconfig() {",
 			"\t\treturn ({",
-			"\t\t$0",
+			"\t\t\ttagName:'article',",
+			"\t\t\tstyle:'flex:1',",
+			"\t\t\tlayout:'ds-flex fd-column ai-stretch gap-s pad-m'",
 			"\t\t})",
+			"\t}",
+			"}",
+			"Va.registerView('/${RELATIVE_FILEPATH/.js|(\\\\)/${1:+\/}/g}', $TM_FILENAME_BASE);"
+			//${RELATIVE_FILEPATH/(.js)//}
+			//"Va.registerView('/${RELATIVE_FILEPATH/((.js))}|/[\\\\]/${1://}${2://g/}/}', $TM_FILENAME_BASE);"
+			//"$/{RELATIVE_FILEPATH/.+?(?=[\\/\\\\]lib)|([\\/\\\\])/${1:+/}/g}"
+			
+		],
+		"description": "Frame7Web View Article",
+		"isFileTemplate": true
+	},
+	"Va.ExView": {
+		"prefix": [
+			"va_createExMainArticle"
+		],
+		"body": [
+			"import Va from '${RELATIVE_FILEPATH/.js|([0-9a-zA-Zㄱ-ㅎ가-힣])|([\\/\\\\])/${2:+..\/}/g}lib/va.js';",
+			"import Frame7Service from '${RELATIVE_FILEPATH/.js|([0-9a-zA-Zㄱ-ㅎ가-힣])|([\\/\\\\])/${2:+..\/}/g}service/Frame7Service.js';",
+			"import CommonCodeService from '${RELATIVE_FILEPATH/.js|([0-9a-zA-Zㄱ-ㅎ가-힣])|([\\/\\\\])/${2:+..\/}/g}service/CommonCodeService.js';",
+			"//import CommonCodePopup from '../../common/CommonCodePopup.js';",
+			
+			"export default class $TM_FILENAME_BASE extends Va.View {",
+			"\tconstructor(){",
+			"\t\tsuper(arguments);",
+			"\t}",
+			"\tmounted(){",
+			"\t\t/*",
+			"\t\tlet dataManagerList = [",
+			"\t\t\t{dataManagerName: 'usrTy', commonCode: 'SC700S', 	commonBlankKey: 'select'},",
+			"\t\t\t{dataManagerName: 'coCd', commonCode: 'AA101S', 	commonBlankKey: 'select'},",
+			"\t\t\t{dataManagerName: 'asemBase', commonCode: 'SC705', 	commonBlankKey: 'select'},",
+			"\t\t\t{dataManagerName: 'lanCd', commonCode: 'SC220', 	commonBlankKey: 'select'},",
+			"\t\t\t{dataManagerName: 'entTy', commonCode: 'SC710', 	commonBlankKey: 'select'},",
+			"\t\t\t{dataManagerName: 'systemCd', commonCode: 'SC010S', 	commonBlankKey: 'select'},",
+			"\t\t\t{dataManagerName: '', commonCode: 'SC010S', commonBlankKey: 'select'},",
+			"\t\t]",
+			"\t\tthis.setDataManager(dataManagerList);",
+			"\t\t*/",
+			"\t\tthis.setMenuPath();",
+			"\t\tthis.setAuth();",
+			"\t}",
+			"\t/*",
+			"\tasync getTempList(view, params){",
+			"\t\tview.getRef('tempGridPagination').addParams(params);",
+			"\t\tlet response = await Frame7Service.list(view, params);",
+			"\t\tif(response.result == true){",
+			"\t\t\tview.getRef('tempGrid').setData(response.data.list);",
+			"\t\t\tview.getRef('tempGridPagination').setResult(view, response.result, response, response.message);",
+			"\t\t} else {",
+			"\t\t\tnew Va.Alert({",
+			"\t\t\t\ttitle:'오류',",
+			"\t\t\t\tmessage: '조회 중 오류가 발생했습니다. (' + response.message + ')'",
+			"\t\t\t}).show(view);",
+			"\t\t}",
+			"\t}",
+			"\t*/",			
+			"\tconfig() {",
+			"\t\treturn ({",
+			"\t\t\ttagName:'exMainArticle',",
+			"\t\t\tstyle:'flex:1',",
+			"\t\t\tlayout:'ds-flex fd-column ai-stretch',",
+			"\t\t\ttags:[",
+			"\t\t\t]",
+			"\t\t})",
+			"\t}",
+			"}",
+			"Va.registerView('/${RELATIVE_FILEPATH/.js|(\\\\)/${1:+\/}/g}', $TM_FILENAME_BASE);"
+			//${RELATIVE_FILEPATH/(.js)//}
+			//"Va.registerView('/${RELATIVE_FILEPATH/((.js))}|/[\\\\]/${1://}${2://g/}/}', $TM_FILENAME_BASE);"
+			//"$/{RELATIVE_FILEPATH/.+?(?=[\\/\\\\]lib)|([\\/\\\\])/${1:+/}/g}"
+			
+		],
+		"description": "Frame7Web View Article",
+		"isFileTemplate": true
+	},	
+	"Va.Dialog": {
+		"prefix": [
+			"va_createDialog"
+		],
+		"body": [
+			"import Va from '../../../lib/va.js';",
+			"export default class $TM_FILENAME_BASE extends Va.View {",
+			"\tconstructor(){",
+			"\t\tsuper(arguments);",
+			"\t}",
+			"\tmounted(){",
+			"\t}",
+			"\tconfig() {",
+			"\t\treturn ({",
+			"\t\t\ttagName:'dialog',",
+			"\t\t\tmodal:true,",
+			"\t\t\tstyle:'flex:1',",
+			"\t\t\tlayout:'ds-flex fd-column ai-stretch gap-s pad-m'",
+			"\t\t})",
+			"\t}",
+			"}",
+			"Va.registerView('/${RELATIVE_FILEPATH/.js|(\\\\)/${1:+\/}/g}', $TM_FILENAME_BASE);"
+			
+		],
+		"description": "Frame7Web view Dialog",
+		"isFileTemplate": true
+	},
+	"Va.SubView": {
+		"prefix": [
+			"va_createSub"
+		],
+		"body": [
+			"import Va from '../../../lib/va.js';",
+			"export default class $TM_FILENAME_BASE extends Va.Sub {",
+			"\tconstructor(view){",
+			"\t\tsuper(arguments);",
+			"\t\tthis.view = view;",
+			"\t}",
+			"\trenderPart() {",
+			"\t\treturn ({",
+			"\t\t\ttagName:'div',",
+			"\t\t\tstyle:'flex:1',",
+			"\t\t\tlayout:'ds-flex fd-column ai-stretch gap-s pad-m'",
+			"\t\t})",
+			"\t}",
+			"}"			
+		],
+		"description": "Frame7Web Sub File",
+		"isFileTemplate": true
+	},
+	"Va.ExSubView": {
+		"prefix": [
+			"va_createExSub"
+		],
+		"body": [
+			"import Va from '../../../lib/va.js';",
+			"export default class $TM_FILENAME_BASE extends Va.Sub {",
+			"\tconstructor(view){",
+			"\t\tsuper(arguments);",
+			"\t\tthis.view = view;",
+			"\t}",
+			"\trenderPart() {",
+			"\t\treturn ({",
+			"\t\t\ttagName:'exSection',",
+			"\t\t\tstyle:'flex:1'",
+			"\t\t})",
+			"\t}",
+			"}"			
+		],
+		"description": "Frame7Web Sub File",
+		"isFileTemplate": true
+	},	
+	"Va.Service": {
+		"prefix": [
+			"va_createService"
+		],
+		"body":[
+			"import Va from '../lib/va.js';",
+			"export default class $TM_FILENAME_BASE extends Va.Service{",
+			"\tstatic list(view, params, callback){",
+			"\t\tlet options ={",
+			"\t\t\tmethod:'GET',",
+			"\t\t\theaders:{",
+			"\t\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t\t},",
+			"\t\t};",
+			"\t\tVa.Http.request(view, './assets/json/list.json', params, options, (view, responseOk, resObj ) => {",
+			"\t\t\tif(responseOk == true){",
+			"\t\t\t\tif(resObj.result == true){",
+			"\t\t\t\t\tcallback(view, resObj.result, resObj, null);",
+			"\t\t\t\t} else {",
+			"\t\t\t\t\tcallback(view, resObj.result, resObj, resObj.error.message);",
+			"\t\t\t\t}",
+			"\t\t\t} else {",
+			"\t\t\t\tcallback(view, false, resObj, error.message);",
+			"\t\t\t}",
+			"\t\t});",
 			"\t}",
 			"}"
 		],
-		"description": "Va.View",
+		"description": "Frame7Web Service",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceList": {
+		"prefix": [
+			"va_createServiceList"
+		],
+		"body":[
+			"static list(view, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'GET',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t},",
+			"\t};",
+			"\tVa.Http.request(view, '/url', params, options, (view, responseOk, resObj ) => {",
+			"\t\tif(responseOk == true){",
+			"\t\t\tif(resObj.result == true){",
+			"\t\t\t\tcallback(view, resObj.result, resObj, null);",
+			"\t\t\t} else {",
+			"\t\t\t\tcallback(view, resObj.result, resObj, resObj.error.message);",
+			"\t\t\t}",
+			"\t\t} else {",
+			"\t\t\tcallback(view, false, resObj, error.message);",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie List",
 		"isFileTemplate": true
 	},
-	"Va.Button": {
+	"Va.ServiceAdd": {
 		"prefix": [
-			"tagVaButton"
+			"va_createServiceAdd"
+		],
+		"body":[
+			"static add(view, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t},",
+			"\t};",
+			"\tVa.Http.request(view, '/url', params, options, (view, responseOk, resObj ) => {",
+			"\t\tif(responseOk == true){",
+			"\t\t\tif(resObj.result == true){",
+			"\t\t\t\tcallback(view, resObj.result, resObj, null);",
+			"\t\t\t} else {",
+			"\t\t\t\tcallback(view, resObj.result, resObj, resObj.error.message);",
+			"\t\t\t}",
+			"\t\t} else {",
+			"\t\t\tcallback(view, false, resObj, error.message);",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Add",
+		"isFileTemplate": true
+	},
+	"Va.ServiceModify": {
+		"prefix": [
+			"va_createServiceModify"
+		],
+		"body":[
+			"static modify(view, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t},",
+			"\t};",
+			"\tVa.Http.request(view, '/url', params, options, (view, responseOk, resObj ) => {",
+			"\t\tif(responseOk == true){",
+			"\t\t\tif(resObj.result == true){",
+			"\t\t\t\tcallback(view, resObj.result, resObj, null);",
+			"\t\t\t} else {",
+			"\t\t\t\tcallback(view, resObj.result, resObj, resObj.error.message);",
+			"\t\t\t}",
+			"\t\t} else {",
+			"\t\t\tcallback(view, false, resObj, error.message);",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Modify",
+		"isFileTemplate": true
+	},
+	"Va.ServiceRemove": {
+		"prefix": [
+			"va_createServiceModify"
+		],
+		"body":[
+			"static remove(view, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t},",
+			"\t};",
+			"\tVa.Http.request(view, '/url', params, options, (view, responseOk, resObj )=>{",
+			"\t\tif(responseOk == true){",
+			"\t\t\tif(resObj.result == true){",
+			"\t\t\t\tcallback(view, resObj.result, resObj, null);",
+			"\t\t\t} else {",
+			"\t\t\t\tcallback(view, resObj.result, resObj, resObj.error.message);",
+			"\t\t\t}",
+			"\t\t} else {",
+			"\t\t\tcallback(view, false, resObj, error.message);",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Remove",
+		"isFileTemplate": true
+	},
+	"Va.ServiceMultipart": {
+		"prefix": [
+			"va_createServiceMultipart"
+		],
+		"body":[
+			"static uploadFile(view, formData, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"multipart/form-data\"",
+			"\t\t},",
+			"\t};",
+			"\tVa.Http.form(view, '/uploadFile', formData, options, (view, responseOk, resObj )=>{",
+			"\t\tif(responseOk == true){",
+			"\t\t\tif(resObj.result == true){",
+			"\t\t\t\tcallback(view, resObj.result, resObj, null);",
+			"\t\t\t} else {",
+			"\t\t\t\tcallback(view, resObj.result, resObj, resObj.error.message);",
+			"\t\t\t}",
+			"\t\t} else {",
+			"\t\t\tcallback(view, false, resObj, error.message);",
+			"\t\t}",
+			"\t});",	
+			"}"
+		],
+		"description": "Frame7Web Servcie Multipart",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceListSync": {
+		"prefix": [
+			"va_createServiceListSync"
+		],
+		"body":[
+			"static async list(view, params){",
+			"\tlet options ={",
+			"\t\tmethod:'GET',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tlet response = await Va.HttpSync.request(view, '/url', params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie List Sync",
+		"isFileTemplate": true
+	},
+	"Va.ServiceAddSync": {
+		"prefix": [
+			"va_createServiceAddSync"
+		],
+		"body":[
+			"static async add(view, params){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t},",
+			"\t};",
+			"\tlet response = await Va.HttpSync.request(view, '/url', params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Add Sync",
+		"isFileTemplate": true
+	},
+	"Va.ServiceModifySync": {
+		"prefix": [
+			"va_createServiceModifySync"
+		],
+		"body":[
+			"static async modify(view, params){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t},",
+			"\t};",
+			"\tlet response = await Va.HttpSync.request(view, '/url', params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Modify Sync",
+		"isFileTemplate": true
+	},
+	"Va.ServiceRemoveSync": {
+		"prefix": [
+			"va_createServiceRemoveSync"
+		],
+		"body":[
+			"static async remove(view, params){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": 'application/json'",
+			"\t\t},",
+			"\t};",
+			"\tlet response = await Va.HttpSync.request(view, '/url', params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Remove Sync",
+		"isFileTemplate": true
+	},
+	"Va.ServiceMultipartSync": {
+		"prefix": [
+			"va_createServiceMultipartSync"
+		],
+		"body":[
+			"static async uploadFile(view, formData, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"multipart/form-data\"",
+			"\t\t},",
+			"\t};",
+			"\tlet response = await Va.Http.form(view, '/uploadFile', formData, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",	
+			"}"
+		],
+		"description": "Frame7Web Servcie Multipart Sync",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceRestList": {
+		"prefix": [
+			"va_createServiceRestList"
+		],
+		"body":[
+			"static list(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'GET',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t},",
+			"\t};",
+			"\tVa.HttpRest.get(view, '/url' + addUrl, params, options, function(view, responseOk, resBodyJson, response){",
+			"\t\tif(responseOk == true){",
+			"\t\t\t// it's up to you",
+			"\t\t\tlet responseJson = {",
+			"\t\t\t\tdata:{",
+			"\t\t\t\t\tlist:resBodyJson",
+			"\t\t\t\t}",
+			"\t\t\t}",
+			"\t\t\tcallback(view, true, responseJson, null);",
+			"\t\t} else {",
+			"\t\t\t// it's up to you",
+			"\t\t\tcallback(view, false, resBodyJson, response.status + '(' + response.statusText + ')');",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest List",
+		"isFileTemplate": true
+	},
+	"Va.ServiceRestInfo": {
+		"prefix": [
+			"va_createServiceRestInfo"
+		],
+		"body":[
+			"static info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'GET',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tVa.HttpRest.get(view, '/url' + addUrl, params, options, function(view, responseOk, resBodyJson, response){",
+			"\t\tif(responseOk == true){",
+			"\t\t\t// it's up to you",
+			"\t\t\tlet responseJson = resBodyJson;",
+			"\t\t\tcallback(view, true, responseJson, null);",
+			"\t\t} else {",
+			"\t\t\t// it's up to you",
+			"\t\t\tcallback(view, false, resBodyJson, response.status + '(' + response.statusText + ')');",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Info",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceRestAdd": {
+		"prefix": [
+			"va_createServiceRestAdd"
+		],
+		"body":[
+			"static info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tVa.HttpRest.post(view, '/url' + addUrl, params, options, function(view, responseOk, resBodyJson, response){",
+			"\t\tif(responseOk == true){",
+			"\t\t\t// it's up to you",
+			"\t\t\tlet responseJson = resBodyJson;",
+			"\t\t\tcallback(view, true, responseJson, null);",
+			"\t\t} else {",
+			"\t\t\t// it's up to you",
+			"\t\t\tcallback(view, false, resBodyJson, response.status + '(' + response.statusText + ')');",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Add",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceRestModify": {
+		"prefix": [
+			"va_createServiceRestModify"
+		],
+		"body":[
+			"static info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'PATCH', //PUT",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tVa.HttpRest.patch(view, '/url' + addUrl, params, options, function(view, responseOk, resBodyJson, response){",
+			"\t\tif(responseOk == true){",
+			"\t\t\t// it's up to you",
+			"\t\t\tlet responseJson = resBodyJson;",
+			"\t\t\tcallback(view, true, responseJson, null);",
+			"\t\t} else {",
+			"\t\t\t// it's up to you",
+			"\t\t\tcallback(view, false, resBodyJson, response.status + '(' + response.statusText + ')');",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Modify",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceRestRemove": {
+		"prefix": [
+			"va_createServiceRestRemove"
+		],
+		"body":[
+			"static info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'DELETE',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tVa.HttpRest.delete(view, '/url' + addUrl, params, options, function(view, responseOk, resBodyJson, response){",
+			"\t\tif(responseOk == true){",
+			"\t\t\t// it's up to you",
+			"\t\t\tlet responseJson = {};",
+			"\t\t\tcallback(view, true, responseJson, null);",
+			"\t\t} else {",
+			"\t\t\t// it's up to you",
+			"\t\t\tcallback(view, false, resBodyJson, response.status + '(' + response.statusText + ')');",
+			"\t\t}",
+			"\t});",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Remove",
+		"isFileTemplate": true
+	},
+
+
+	"Va.ServiceRestListSync": {
+		"prefix": [
+			"va_createServiceRestListSync"
+		],
+		"body":[
+			"static async list(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'GET',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t},",
+			"\t};",
+			"\tlet response = await Va.HttpRest.get(view, '/url' + addUrl, params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest List",
+		"isFileTemplate": true
+	},
+	"Va.ServiceRestInfoSync": {
+		"prefix": [
+			"va_createServiceRestInfo"
+		],
+		"body":[
+			"static async info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'GET',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tlet response = await Va.HttpRest.get(view, '/url' + addUrl, params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Info",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceRestAddSync": {
+		"prefix": [
+			"va_createServiceRestAddSync"
+		],
+		"body":[
+			"static sync info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'POST',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tlet response = await Va.HttpRest.post(view, '/url' + addUrl, params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Add Sync",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceRestModifySync": {
+		"prefix": [
+			"va_createServiceRestModifySync"
+		],
+		"body":[
+			"static async info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'PATCH', //PUT",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tlet response = Va.HttpRest.patch(view, '/url' + addUrl, params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Modify Sync",
+		"isFileTemplate": true
+	},	
+	"Va.ServiceRestRemoveSync": {
+		"prefix": [
+			"va_createServiceRestRemoveSync"
+		],
+		"body":[
+			"static info(view, addUrl, params, callback){",
+			"\tlet options ={",
+			"\t\tmethod:'DELETE',",
+			"\t\theaders:{",
+			"\t\t\t\"Content-Type\": \"application/json\"",
+			"\t\t},",
+			"\t};",
+			"\tlet response = Va.HttpRest.delete(view, '/url' + addUrl, params, options);",
+			"\treturn {",
+			"\t\topener: response.opener,",
+			"\t\tresult: response.result,",
+			"\t\tdata: response.data,",
+			"\t\tmessage: response.error.message",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Rest Remove Sync",
+		"isFileTemplate": true
+	},
+
+
+
+	"Va.ServiceAxios": {
+		"prefix": [
+			"va_createServiceAxios"
+		],
+		"body":[
+			"import Va from '../lib/va.js';",
+			"import axios from '../assets/axios/dist/esm/axios.js';",
+			"export default class $TM_FILENAME_BASE extends Va.Service{",
+			"\tstatic async list(view, params){",
+			"\t\ttry{",
+			"\t\t\tlet paramsStr = Va.Util.getParamsStr(params);",
+			"\t\t\tlet res = await axios({",
+			"\t\t\t\tmethod:'GET',",
+			"\t\t\t\theaders:{",
+			"\t\t\t\t\tAuthorization: Va.Config.get('token')",
+			"\t\t\t\t},",
+			"\t\t\t\turl: Va.Config.get('serviceUrl') +'url' + '?' + paramsStr",
+			"\t\t\t});",
+			"\t\t\tlet response = {};",
+			"\t\t\tresponse = res.data;",
+			"\t\t\treturn response;",
+			"\t\t}catch(error){",
+			"\t\t\tconsole.log('error', error);",
+			"\t\t\tlet response = {};",
+			"\t\t\tresponse.result = false;",
+			"\t\t\tresponse.data = {};",
+			"\t\t\tif(error.response != undefined && error.response.data != undefined && error.response.data.error != undefined){",
+			"\t\t\t\tresponse.message = error.response.data.error; ",
+			"\t\t\t} else {",
+			"\t\t\t\tresponse.message = error.message + '(' + error.status + ')';",
+			"\t\t\t}",
+			"\t\t\treturn response;",
+			"\t\t}",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Axios Service",
+		"isFileTemplate": true
+	},
+	"Va.ServiceAxiosListSync": {
+		"prefix": [
+			"va_createServiceAxiosListSync"
+		],
+		"body":[
+			"static async list(view, params){",
+			"\ttry{",
+			"\t\tlet paramsStr = Va.Util.getParamsStr(params);",
+			"\t\tlet res = await axios({",
+			"\t\t\tmethod:'GET',",
+			"\t\t\turl: Va.Config.get('serviceUrl') +'url'  + '?' + paramsStr",
+			"\t\t});",
+			"\t\tlet response = {};",
+			"\t\tresponse= res.data;",
+			"\t\treturn response;",
+			"\t}catch(error){",
+			"\t\tconsole.log('error', error);",
+			"\t\tlet response = {};",
+			"\t\tresponse.result = false;",
+			"\t\tresponse.data = {};",
+			"\t\tif(error.response != undefined && error.response.data != undefined && error.response.data.error != undefined){",
+			"\t\t\tresponse.message = error.response.data.error; ",
+			"\t\t} else {",
+			"\t\t\tresponse.message = error.message + '(' + error.status + ')';",
+			"\t\t}",
+			"\t\treturn response;",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Axios List",
+		"isFileTemplate": true
+	},
+	"Va.ServiceAxiosPostSync": {
+		"prefix": [
+			"va_createServiceAxiosPostSync"
+		],
+		"body":[
+			"static async post(view, params){",
+			"\ttry{",
+			"\t\tlet res = await axios({",
+			"\t\t\tmethod:'POST',",
+			"\t\t\turl: Va.Config.get('serviceUrl') +'url' , ",
+			"\t\t\tdata: params",
+			"\t\t});",
+			"\t\tlet response = {};",
+			"\t\tresponse = res.data;",
+			"\t\treturn response;",
+			"\t}catch(error){",
+			"\t\tlet response = {};",
+			"\t\tresponse.result = false;",
+			"\t\tresponse.data = {};",
+			"\t\tif(error.response != undefined && error.response.data != undefined && error.response.data.error != undefined){",
+			"\t\t\tresponse.message = error.response.data.error; ",
+			"\t} else {",
+			"\t\t\tresponse.message = error.message + '(' + error.status + ')';",
+			"\t\t}",
+			"\t\treturn response;",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Axios Add Sync",
+		"isFileTemplate": true
+	},
+
+	"Va.ServiceAxiosAdd": {
+		"prefix": [
+			"va_createServiceAxiosAddSync"
+		],
+		"body":[
+			"static async add(view, params){",
+			"\ttry{",
+			"\t\tlet res = await axios({",
+			"\t\t\tmethod:'POST',",
+			"\t\t\turl: Va.Config.get('serviceUrl') +'url' , ",
+			"\t\t\tdata: params",
+			"\t\t});",
+			"\t\tlet response = {};",
+			"\t\tresponse = res.data;",
+			"\t\treturn response;",
+			"\t}catch(error){",
+			"\t\tlet response = {};",
+			"\t\tresponse.result = false;",
+			"\t\tresponse.data = {};",
+			"\t\tif(error.response != undefined && error.response.data != undefined && error.response.data.error != undefined){",
+			"\t\t\tresponse.message = error.response.data.error; ",
+			"\t} else {",
+			"\t\t\tresponse.message = error.message + '(' + error.status + ')';",
+			"\t\t}",
+			"\t\treturn response;",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Axios Add Sync",
+		"isFileTemplate": true
+	},
+	"Va.ServiceAxiosModifySync": {
+		"prefix": [
+			"va_createServiceAxiosModifySync"
+		],
+		"body":[
+			"static async modify(view, addUrl, params){",
+			"\ttry{",
+			"\t\tlet res = await axios({",
+			"\t\t\tmethod:'PUT',",
+			"\t\t\turl: 'https://reqres.in/api/users' + addUrl, ",
+			"\t\t\tdata: params",
+			"\t\t});",
+			"\t\tlet response = {};",
+			"\t\tresponse.result = true;",
+			"\t\tresponse.data = res.data;",
+			"\t\tresponse.message = res.message; ",
+			"\t\treturn response;",
+			"\t}catch(error){",
+			"\t\tlet response = {};",
+			"\t\tresponse.result = false;",
+			"\t\tresponse.data = {};",
+			"\t\tif(error.response != undefined && error.response.data != undefined && error.response.data.error != undefined){",
+			"\t\t\tresponse.message = error.response.data.error; ",
+			"\t} else {",
+			"\t\t\tresponse.message = error.message + '(' + error.status + ')';",
+			"\t\t}",
+			"\t\treturn response;",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Axios Modify Sync",
+		"isFileTemplate": true
+	},
+	"Va.ServiceAxiosRemoveSync": {
+		"prefix": [
+			"va_createServiceAxiosRemoveSync"
+		],
+		"body":[
+			"static async remove(view, addUrl){",
+			"\ttry{",
+			"\t\tlet res = await axios({",
+			"\t\t\tmethod:'DELETE',",
+			"\t\t\turl: 'https://reqres.in/api/users' + addUrl, ",
+			"\t\t});",
+			"\t\tlet response = {};",
+			"\t\tresponse.result = true;",
+			"\t\tresponse.data = res.data;",
+			"\t\tresponse.message = res.message; ",
+			"\t\treturn response;",
+			"\t}catch(error){",
+			"\t\tlet response = {};",
+			"\t\tresponse.result = false;",
+			"\t\tresponse.data = {};",
+			"\t\tif(error.response != undefined && error.response.data != undefined && error.response.data.error != undefined){",
+			"\t\t\tresponse.message = error.response.data.error; ",
+			"\t} else {",
+			"\t\t\tresponse.message = error.message + '(' + error.status + ')';",
+			"\t\t}",
+			"\t\treturn response;",
+			"\t}",
+			"}"
+		],
+		"description": "Frame7Web Servcie Axios Remove Sync",
+		"isFileTemplate": true
+	},
+	"Va.CallServiceList": {
+		"prefix":[
+			"va_callServiceList"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1:'test'",
+			"};",
+			"TempService.list(this, params, (me, result, responseJson, message) =>{",
+			"\tif(result == true){",
+			"\t\tthis.getRef('grid').setData(responseJson.data.list)",
+			"\t} else {",
+			"\t\tnew Va.Alert({title:'확인', message:message}).show(this);",
+			"\t}",
+			"})"
+		],
+		"description": "Frame7Web Call Servcie List",
+		"isFileTemplate": true
+	},
+	"Va.CallServiceAdd": {
+		"prefix":[
+			"va_callServiceAdd"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1: this.getRef('param1').getValue()",
+			"}",
+			"TempService.add(this, params, (me, result, responseJson, message) =>{",
+			"\tif(result == true){",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage:'등록했습니다.'",
+			"\t\t}).show(this, ()=>{",
+			"\t\t\t//Va.setRouterUrl('main', 'list');",
+			"\t\t});",
+			"\t} else {",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage:message",
+			"\t\t}).show(this);",
+			"})"
+		],
+		"description": "Frame7Web Call Servcie Add",
+		"isFileTemplate": true
+	},
+	"Va.CallServiceModify": {
+		"prefix":[
+			"va_callServiceModify"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1: this.getRef('param1').getValue()",
+			"}",
+			"TempService.modify(this, params, (me, result, responseJson, message) =>{",
+			"\tif(result == true){",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage:'변경했습니다.'",
+			"\t\t}).show(this, ()=>{",
+			"\t\t\t//Va.setRouterUrl('main', 'list');",
+			"\t\t});",
+			"\t} else {",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage:message",
+			"\t\t}).show(this);",
+			"})"
+		],
+		"description": "Frame7Web Call Servcie Modify",
+		"isFileTemplate": true
+	},
+	"Va.CallServiceRemove": {
+		"prefix":[
+			"va_callServiceRemove"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1: this.getRef('param1').getValue()",
+			"}",
+			"TempService.remove(this, params, (me, result, responseJson, message) =>{",
+			"\tif(result == true){",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage:'삭제했습니다.'",
+			"\t\t}).show(this, ()=>{",
+			"\t\t\t//Va.setRouterUrl('main', 'list');",
+			"\t\t});",
+			"\t} else {",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage:message",
+			"\t\t}).show(this);",
+			"})"
+		],
+		"description": "Frame7Web Call Servcie Remove",
+		"isFileTemplate": true
+	},
+	"Va.CallServiceMultipart": {
+		"prefix":[
+			"va_callServiceMultipart"
+		],
+		"body":[
+			"let formData = new FormData();",
+			"formData.append(\"file\", files[0]);",
+			"TempService.uploadFile(this, formData, (me, result, responseJson, message) => {",
+			"\tif(result == true){",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage: message",
+			"\t\t}).show(this);",
+			"\t} else {",
+			"\t\tnew Va.Alert({",
+			"\t\t\ttitle:'확인',",
+			"\t\t\tmessage: message",
+			"\t\t}).show(this);",
+			"\t}",
+			"});"
+		],
+		"description": "Frame7Web Call Servcie Multipart",
+		"isFileTemplate": true
+	},
+
+	"Va.CallServiceListSync": {
+		"prefix":[
+			"va_callServiceListSync"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1:'test'",
+			"};",
+			"let responseJson = await TempService.list(this, params);",
+			"if(responseJson.result == true){",
+			"\tthis.getRef('list').setData(responseJson.data.list)",
+			"} else {",
+			"\tnew Va.Alert({",
+			"\t\ttitle:'확인',",
+			"\t\tmessage: responseJson.message",
+			"\t}).show(this);",			
+			"}"
+		],
+		"description": "Frame7Web Call Servcie List Sync",
+		"isFileTemplate": true
+	},
+	"Va.CallServicePostSync": {
+		"prefix":[
+			"va_callServicePostSync"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1:'test'",
+			"};",
+			"let responseJson = await TempService.post(this, params);",
+			"if(responseJson.result == true){",
+			"\t// Your Code...",
+			"} else {",
+			"\tnew Va.Alert({",
+			"\t\ttitle:'확인',",
+			"\t\tmessage: responseJson.message",
+			"\t}).show(this);",
+			"}"
+		],
+		"description": "Frame7Web Call Servcie Add Sync",
+		"isFileTemplate": true
+	},
+	"Va.CallServiceAddSync": {
+		"prefix":[
+			"va_callServiceAddSync"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1:'test'",
+			"};",
+			"let responseJson = await TempService.add(this, params);",
+			"if(responseJson.result == true){",
+			"\t//Va.setRouterUrl('main', 'list');",
+			"} else {",
+			"\tnew Va.Alert({",
+			"\t\ttitle:'확인',",
+			"\t\tmessage: responseJson.message",
+			"\t}).show(this);",			
+			"}"
+		],
+		"description": "Frame7Web Call Servcie Add Sync",
+		"isFileTemplate": true
+	},
+
+	"Va.CallServiceModifySync": {
+		"prefix":[
+			"va_callServiceModifySync"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1:'test'",
+			"};",
+			"let responseJson = await TempService.modify(this, params);",
+			"if(responseJson.result == true){",
+			"\t//Va.setRouterUrl('main', 'list');",
+			"} else {",
+			"\tnew Va.Alert({",
+			"\t\ttitle:'확인',",
+			"\t\tmessage: responseJson.message",
+			"\t}).show(this);",			
+			"}"
+		],
+		"description": "Frame7Web Call Servcie Modify Sync",
+		"isFileTemplate": true
+	},
+	"Va.CallServiceRemoveSync": {
+		"prefix":[
+			"va_callServiceRemoveSync"
+		],
+		"body":[
+			"let params = {",
+			"\tparam1:'test'",
+			"};",
+			"let responseJson = await TempService.remove(this, params);",
+			"if(responseJson.result == true){",
+			"\t//Va.setRouterUrl('main', 'list');",
+			"} else {",
+			"\tnew Va.Alert({",
+			"\t\ttitle:'확인',",
+			"\t\tmessage: responseJson.message",
+			"\t}).show(this);",			
+			"}"
+		],
+		"description": "Frame7Web Call Servcie Remove Sync",
+		"isFileTemplate": true
+	},
+
+
+
+
+
+	"Va.Masking": {
+		"prefix":[
+			"va_createMasking"
+		],
+		"body":[
+			"let masking = new Va.Masking({",
+			"\tdelay:5",
+			"});",
+			"masking.show(this);"
+		]
+	},
+	"Va.MaskingWithButton": {
+		"prefix":[
+			"va_createMaskingWithButton"
+		],
+		"body":[
+			"let masking = Va.createComponent({",
+			"\tview: this,",
+			"\ttagName:'masking',",
+			"\tref:'maskingWithButton',",
+			"\tdelay: 100,",
+			"\ttags:[{",
+			"\t\ttagName:'button',",
+			"\t\ttext: 'click to close...',",
+			"\t\tonClick:'onCloseMasking'",
+			"\t}]",
+			"});",
+			"masking.show();"
+		]
+	},
+	"Va.Loading": {
+		"prefix":[
+			"va_createLoading"
+		],
+		"body":[
+			"let loading = new Va.Loading({",
+			"\tview:this,",
+			"\tdelay: 5,",
+			"\tlabel: '기다려주세요...'",
+			"});",
+			"loading.show();"
+		]
+	},	
+	"Va.Alert": {
+		"prefix":[
+			"va_createAlert"
+		],
+		"body":[
+			"new Va.Alert({",
+			"\ttitle: '확인',",
+			"\tmessage: 'message'",
+			"}).show(this, (response, evt)=>{",				
+			"});"
+		]
+	},	
+	"Va.Confirm": {
+		"prefix":[
+			"va_createConfirm"
+		],
+		"body":[
+			"new Va.Confirm({",
+			"\ttitle: '확인',",
+			"\tmessage: 'message'",
+			"}).show(this, (response, evt)=>{",
+			"\tif(response == 'yes'){",
+			"\t\tconsole.log('response', response);",
+			"\t}",		
+			"});"
+		]
+	},	
+	"Va.Prompt": {
+		"prefix":[
+			"va_createPrompt"
+		],
+		"body":[
+			"new Va.Prompt({",
+			"\ttitle: '확인',",
+			"\tmessage: 'message'",
+			"}).show(this, (response, prompt, evt)=>{",
+			"\tif(response == 'yes'){",
+			"\t\tconsole.log('response', prompt, response);",
+			"\t}",		
+			"});"
+		]
+	},	
+	"Va.Popover": {
+		"prefix":[
+			"va_createPopover"
+		],
+		"body":[
+			"let popover = new Va.Popover({",
+			"\ttitle: '타이틀',",
+			"\tposition: 'right',",
+			"\tinnerHTML: '내용'",
+			"});",
+			"popover.showBy(button);"
+		]
+	},	
+	"Va.Toast": {
+		"prefix":[
+			"va_createToast"
+		],
+		"body":[
+			"let toast = new Va.Toast({",
+			"\tposition: 'right',",
+			"\tinnerHTML: '토스트'",
+			"});",
+			"toast.show(this);"
+		]
+	},		
+	"Va.ButtonFocus": {
+		"prefix": [
+			"va_eventButtonFocus"
 		],
 		"body": [
-			"{",
-			"\ttagName: 'button',",
-			"\ttext: '${0:button},'",
-			"},"
+			"onButtonFocus (button, element, evt){",
+			"\t$0",
+			"}"
 		],
-		"description": "Va.Button",
+		"description": "Va.Button focus",
+		"isFileTemplate": false
+	},
+	"Va.ButtonBlur": {
+		"prefix": [
+			"va_eventButtonBlur"
+		],
+		"body": [
+			"onButtonBlur (button, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Button blur",
 		"isFileTemplate": false
 	},
 	"Va.ButtonClick": {
 		"prefix": [
-			"eventVaButtonClick"
+			"va_eventButtonClick"
 		],
 		"body": [
-			"onClick (button, element, evt){",
-			"$0",
+			"onButtonClick (button, element, evt){",
+			"\t$0",
 			"}"
 		],
 		"description": "Va.Button",
 		"isFileTemplate": false
-	}
+	},
+	"Va.ButtonContextmenu": {
+		"prefix": [
+			"va_eventButtonContextmenu"
+		],
+		"body": [
+			"onButtonContextmenu (button, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Button",
+		"isFileTemplate": false
+	},
+	"Va.CompoundButtonFocus": {
+		"prefix": [
+			"va_eventCompoundButtonFocus"
+		],
+		"body": [
+			"onCompoundButtonFocus (compoundbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CompoundButton focus",
+		"isFileTemplate": false
+	},
+	"Va.CompoundButtonBlur": {
+		"prefix": [
+			"va_eventCompoundButtonBlur"
+		],
+		"body": [
+			"onCompoundButtonBlur (compoundbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CompoundButton blur",
+		"isFileTemplate": false
+	},
+	"Va.CompoundButtonClick": {
+		"prefix": [
+			"va_eventCompoundButtonClick"
+		],
+		"body": [
+			"onCompoundButtonClick (compoundbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CompoundButton",
+		"isFileTemplate": false
+	},
+	"Va.CompoundButtonContextmenu": {
+		"prefix": [
+			"va_eventCompoundButtonContextmenu"
+		],
+		"body": [
+			"onCompoundButtonContextmenu (compoundbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CompoundButton",
+		"isFileTemplate": false
+	},
+	"Va.MenuButtonFocus": {
+		"prefix": [
+			"va_eventMenuButtonFocus"
+		],
+		"body": [
+			"onMenuButtonFocus (menubutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MenuButton focus",
+		"isFileTemplate": false
+	},
+	"Va.MenuButtonBlur": {
+		"prefix": [
+			"va_eventMenuButtonBlur"
+		],
+		"body": [
+			"onMenuButtonBlur (menubutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MenuButton blur",
+		"isFileTemplate": false
+	},
+	"Va.MenuButtonClick": {
+		"prefix": [
+			"va_eventMenuButtonClick"
+		],
+		"body": [
+			"onMenuButtonClick (menubutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MenuButton click",
+		"isFileTemplate": false
+	},
+	"Va.MenuButtonContextmenu": {
+		"prefix": [
+			"va_eventMenuButtonContextmenu"
+		],
+		"body": [
+			"onMenuButtonContextmenu (menubutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MenuButton contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.MenuButtonSelect": {
+		"prefix": [
+			"va_eventMenuButtonSelect"
+		],
+		"body": [
+			"onMenuButtonSelect (menubutton, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MenuButton select",
+		"isFileTemplate": false
+	},
+	"Va.MenuButtonExpand": {
+		"prefix": [
+			"va_eventMenuButtonExpand"
+		],
+		"body": [
+			"onMenuButtonExpand (menubutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MenuButton expand",
+		"isFileTemplate": false
+	},
+	"Va.MenuButtonCollapse": {
+		"prefix": [
+			"va_eventMenuButtonCollapse"
+		],
+		"body": [
+			"onMenuButtonCollapse (menubutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MenuButton collapse",
+		"isFileTemplate": false
+	},
+	"Va.ExpandButtonFocus": {
+		"prefix": [
+			"va_eventExpandButtonFocus"
+		],
+		"body": [
+			"onExpandButtonFocus (expandbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ExpandButton focus",
+		"isFileTemplate": false
+	},
+	"Va.ExpandButtonBlur": {
+		"prefix": [
+			"va_eventExpandButtonBlur"
+		],
+		"body": [
+			"onExpandButtonBlur (expandbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ExpandButton blur",
+		"isFileTemplate": false
+	},
+	"Va.ExpandButtonClick": {
+		"prefix": [
+			"va_eventExpandButtonClick"
+		],
+		"body": [
+			"onExpandButtonClick (expandbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ExpandButton click",
+		"isFileTemplate": false
+	},
+	"Va.ExpandButtonContextmenu": {
+		"prefix": [
+			"va_eventExpandButtonContextmenu"
+		],
+		"body": [
+			"onExpandButtonContextmenu (expandbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ExpandButton contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ExpandButtonExpand": {
+		"prefix": [
+			"va_eventExpandButtonExpand"
+		],
+		"body": [
+			"onExpandButtonExpand (expandbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ExpandButton expand",
+		"isFileTemplate": false
+	},
+	"Va.ExpandButtonCollapse": {
+		"prefix": [
+			"va_eventExpandButtonCollapse"
+		],
+		"body": [
+			"onExpandButtonCollapse (expandbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ExpandButton collapse",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveButtonFocus": {
+		"prefix": [
+			"va_eventResponsiveButtonFocus"
+		],
+		"body": [
+			"onResponsiveButtonFocus (responsivebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveButton focus",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveButtonBlur": {
+		"prefix": [
+			"va_eventResponsiveButtonBlur"
+		],
+		"body": [
+			"onResponsiveButtonBlur (responsivebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveButton blur",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveButtonClick": {
+		"prefix": [
+			"va_eventResponsiveButtonClick"
+		],
+		"body": [
+			"onResponsiveButtonClick (responsivebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveButton click",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveButtonContextmenu": {
+		"prefix": [
+			"va_eventResponsiveButtonContextmenu"
+		],
+		"body": [
+			"onResponsiveButtonContextmenu (responsivebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveButton contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveButtonSelect": {
+		"prefix": [
+			"va_eventResponsiveButtonSelect"
+		],
+		"body": [
+			"onResponsiveButtonSelect (responsivebutton, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveButton select",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveButtonExpand": {
+		"prefix": [
+			"va_eventResponsiveButtonExpand"
+		],
+		"body": [
+			"onResponsiveButtonExpand (responsivebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveButton expand",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveButtonCollapse": {
+		"prefix": [
+			"va_eventResponsiveButtonCollapse"
+		],
+		"body": [
+			"onResponsiveButtonCollapse (responsivebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveButton collapse",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonFocus": {
+		"prefix": [
+			"va_eventSplitButtonFocus"
+		],
+		"body": [
+			"onSplitButtonFocus (splitbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton focus",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonBlur": {
+		"prefix": [
+			"va_eventSplitButtonBlur"
+		],
+		"body": [
+			"onSplitButtonBlur (splitbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton blur",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonClick": {
+		"prefix": [
+			"va_eventSplitButtonClick"
+		],
+		"body": [
+			"onSplitButtonClick (splitbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton click",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonMenuClick": {
+		"prefix": [
+			"va_eventSplitButtonMenuClick"
+		],
+		"body": [
+			"onSplitButtonClick (splitbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton click",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonContextmenu": {
+		"prefix": [
+			"va_eventSplitButtonContextmenu"
+		],
+		"body": [
+			"onSplitButtonContextmenu (splitbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonSelect": {
+		"prefix": [
+			"va_eventSplitButtonSelect"
+		],
+		"body": [
+			"onSplitButtonSelect (splitbutton, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton select",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonExpand": {
+		"prefix": [
+			"va_eventSplitButtonExpand"
+		],
+		"body": [
+			"onSplitButtonExpand (splitbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton expand",
+		"isFileTemplate": false
+	},
+	"Va.SplitButtonCollapse": {
+		"prefix": [
+			"va_eventSplitButtonCollapse"
+		],
+		"body": [
+			"onSplitButtonCollapse (splitbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SplitButton collapse",
+		"isFileTemplate": false
+	},
+	"Va.ToggleButtonFocus": {
+		"prefix": [
+			"va_eventToggleButtonFocus"
+		],
+		"body": [
+			"onToggleButtonFocus (togglebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToggleButton focus",
+		"isFileTemplate": false
+	},
+	"Va.ToggleButtonBlur": {
+		"prefix": [
+			"va_eventToggleButtonBlur"
+		],
+		"body": [
+			"onToggleButtonBlur (togglebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToggleButton blur",
+		"isFileTemplate": false
+	},
+	"Va.ToggleButtonClick": {
+		"prefix": [
+			"va_eventToggleButtonClick"
+		],
+		"body": [
+			"onToggleButtonClick (togglebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToggleButton click",
+		"isFileTemplate": false
+	},
+	"Va.ToggleButtonContextmenu": {
+		"prefix": [
+			"va_eventToggleButtonContextmenu"
+		],
+		"body": [
+			"onToggleButtonContextmenu (togglebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToggleButton contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.TabButtonFocus": {
+		"prefix": [
+			"va_eventTabButtonFocus"
+		],
+		"body": [
+			"onTabButtonFocus (tabbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TabButton focus",
+		"isFileTemplate": false
+	},
+	"Va.TabButtonBlur": {
+		"prefix": [
+			"va_eventTabButtonBlur"
+		],
+		"body": [
+			"onTabButtonBlur (tabbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TabButton blur",
+		"isFileTemplate": false
+	},
+	"Va.TabButtonClick": {
+		"prefix": [
+			"va_eventTabButtonClick"
+		],
+		"body": [
+			"onTabButtonClick (tabbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TabButton click",
+		"isFileTemplate": false
+	},
+	"Va.TabButtonContextmenu": {
+		"prefix": [
+			"va_eventTabButtonContextmenu"
+		],
+		"body": [
+			"onTabButtonContextmenu (tabbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TabButton contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.TabButtonClose": {
+		"prefix": [
+			"va_eventTabButtonClose"
+		],
+		"body": [
+			"onTabButtonClose (tabbutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TabButton close",
+		"isFileTemplate": false
+	},
+	"Va.FileButtonFocus": {
+		"prefix": [
+			"va_eventFileButtonFocus"
+		],
+		"body": [
+			"onFileButtonFocus (filebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileButton focus",
+		"isFileTemplate": false
+	},
+	"Va.FileButtonBlur": {
+		"prefix": [
+			"va_eventFileButtonBlur"
+		],
+		"body": [
+			"onFileButtonBlur (filebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileButton blur",
+		"isFileTemplate": false
+	},
+	"Va.FileButtonClick": {
+		"prefix": [
+			"va_eventFileButtonClick"
+		],
+		"body": [
+			"onFileButtonClick (filebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileButton click",
+		"isFileTemplate": false
+	},
+	"Va.FileButtonContextmenu": {
+		"prefix": [
+			"va_eventFileButtonContextmenu"
+		],
+		"body": [
+			"onFileButtonContextmenu (filebutton, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileButton contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.FileButtonChange": {
+		"prefix": [
+			"va_eventFileButtonChange"
+		],
+		"body": [
+			"onFileButtonChange (filebutton, element, files, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileButton change",
+		"isFileTemplate": false
+	},
+	"Va.LinkFocus": {
+		"prefix": [
+			"va_eventLinkFocus"
+		],
+		"body": [
+			"onLinkFocus (link, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Link focus",
+		"isFileTemplate": false
+	},
+	"Va.LinkBlur": {
+		"prefix": [
+			"va_eventLinkBlur"
+		],
+		"body": [
+			"onLinkBlur (link, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Link blur",
+		"isFileTemplate": false
+	},
+	"Va.LinkClick": {
+		"prefix": [
+			"va_eventLinkClick"
+		],
+		"body": [
+			"onLinkClick (link, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Link click",
+		"isFileTemplate": false
+	},
+	"Va.LinkContextmenu": {
+		"prefix": [
+			"va_eventLinkContextmenu"
+		],
+		"body": [
+			"onLinkContextmenu (link, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Link contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.InputFocus": {
+		"prefix": [
+			"va_eventInputFocus"
+		],
+		"body": [
+			"onInputFocus (input, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Input focus",
+		"isFileTemplate": false
+	},
+	"Va.InputBlur": {
+		"prefix": [
+			"va_eventInputBlur"
+		],
+		"body": [
+			"onInputBlur (input, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Input blur",
+		"isFileTemplate": false
+	},
+	"Va.InputClick": {
+		"prefix": [
+			"va_eventInputClick"
+		],
+		"body": [
+			"onInputClick (input, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Input click",
+		"isFileTemplate": false
+	},
+	"Va.InputContextmenu": {
+		"prefix": [
+			"va_eventInputContextmenu"
+		],
+		"body": [
+			"onInputContextmenu (input, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Input contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.InputKeydown": {
+		"prefix": [
+			"va_eventInputKeydown"
+		],
+		"body": [
+			"onInputKeydown (input, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Input keydown",
+		"isFileTemplate": false
+	},
+	"Va.InputKeyup": {
+		"prefix": [
+			"va_eventInputKeyup"
+		],
+		"body": [
+			"onInputKeyup (input, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Input keyup",
+		"isFileTemplate": false
+	},
+	"Va.InputFieldFocus": {
+		"prefix": [
+			"va_eventInputFieldFocus"
+		],
+		"body": [
+			"onInputFieldFocus (inputfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.InputField focus",
+		"isFileTemplate": false
+	},
+	"Va.InputFieldBlur": {
+		"prefix": [
+			"va_eventInputFieldBlur"
+		],
+		"body": [
+			"onInputFieldBlur (inputfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.InputField blur",
+		"isFileTemplate": false
+	},
+	"Va.InputFieldClick": {
+		"prefix": [
+			"va_eventInputFieldClick"
+		],
+		"body": [
+			"onInputFieldClick (inputfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.InputField click",
+		"isFileTemplate": false
+	},
+	"Va.InputFieldContextmenu": {
+		"prefix": [
+			"va_eventInputFieldContextmenu"
+		],
+		"body": [
+			"onInputFieldContextmenu (inputfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.InputField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.InputFieldKeydown": {
+		"prefix": [
+			"va_eventInputFieldKeydown"
+		],
+		"body": [
+			"onInputFieldKeydown (inputfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.InputField keydown",
+		"isFileTemplate": false
+	},
+	"Va.InputFieldKeyup": {
+		"prefix": [
+			"va_eventInputFieldKeyup"
+		],
+		"body": [
+			"onInputFieldKeyup (inputfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.InputField keyup",
+		"isFileTemplate": false
+	},
+	"Va.NumberFocus": {
+		"prefix": [
+			"va_eventNumberFocus"
+		],
+		"body": [
+			"onNumberFocus (number, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Number focus",
+		"isFileTemplate": false
+	},
+	"Va.NumberBlur": {
+		"prefix": [
+			"va_eventNumberBlur"
+		],
+		"body": [
+			"onNumberBlur (number, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Number blur",
+		"isFileTemplate": false
+	},
+	"Va.NumberClick": {
+		"prefix": [
+			"va_eventNumberClick"
+		],
+		"body": [
+			"onNumberClick (number, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Number click",
+		"isFileTemplate": false
+	},
+	"Va.NumberContextmenu": {
+		"prefix": [
+			"va_eventNumberContextmenu"
+		],
+		"body": [
+			"onNumberContextmenu (number, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Number contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.NumberKeydown": {
+		"prefix": [
+			"va_eventNumberKeydown"
+		],
+		"body": [
+			"onNumberKeydown (number, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Number keydown",
+		"isFileTemplate": false
+	},
+	"Va.NumberKeyup": {
+		"prefix": [
+			"va_eventNumberKeyup"
+		],
+		"body": [
+			"onNumberKeyup (number, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Number keyup",
+		"isFileTemplate": false
+	},
+	"Va.NumberFieldFocus": {
+		"prefix": [
+			"va_eventNumberFieldFocus"
+		],
+		"body": [
+			"onNumberFieldFocus (numberfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NumberField focus",
+		"isFileTemplate": false
+	},
+	"Va.NumberFieldBlur": {
+		"prefix": [
+			"va_eventNumberFieldBlur"
+		],
+		"body": [
+			"onNumberFieldBlur (numberfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NumberField blur",
+		"isFileTemplate": false
+	},
+	"Va.NumberFieldClick": {
+		"prefix": [
+			"va_eventNumberFieldClick"
+		],
+		"body": [
+			"onNumberFieldClick (numberfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NumberField click",
+		"isFileTemplate": false
+	},
+	"Va.NumberFieldContextmenu": {
+		"prefix": [
+			"va_eventNumberFieldContextmenu"
+		],
+		"body": [
+			"onNumberFieldContextmenu (numberfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NumberField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.NumberFieldKeydown": {
+		"prefix": [
+			"va_eventNumberFieldKeydown"
+		],
+		"body": [
+			"onNumberFieldKeydown (numberfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NumberField keydown",
+		"isFileTemplate": false
+	},
+	"Va.NumberFieldKeyup": {
+		"prefix": [
+			"va_eventNumberFieldKeyup"
+		],
+		"body": [
+			"onNumberFieldKeyup (numberfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NumberField keyup",
+		"isFileTemplate": false
+	},
+"Va.SearchFocus": {
+		"prefix": [
+			"va_eventSearchFocus"
+		],
+		"body": [
+			"onSearchFocus (search, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Search focus",
+		"isFileTemplate": false
+	},
+	"Va.SearchBlur": {
+		"prefix": [
+			"va_eventSearchBlur"
+		],
+		"body": [
+			"onSearchBlur (search, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Search blur",
+		"isFileTemplate": false
+	},
+	"Va.SearchClick": {
+		"prefix": [
+			"va_eventSearchClick"
+		],
+		"body": [
+			"onSearchClick (search, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Search click",
+		"isFileTemplate": false
+	},
+	"Va.SearchContextmenu": {
+		"prefix": [
+			"va_eventSearchContextmenu"
+		],
+		"body": [
+			"onSearchContextmenu (search, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Search contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.SearchKeydown": {
+		"prefix": [
+			"va_eventSearchKeydown"
+		],
+		"body": [
+			"onSearchKeydown (search, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Search keydown",
+		"isFileTemplate": false
+	},
+	"Va.SearchKeyup": {
+		"prefix": [
+			"va_eventSearchKeyup"
+		],
+		"body": [
+			"onSearchKeyup (search, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Search keyup",
+		"isFileTemplate": false
+	},
+	"Va.SearchFieldFocus": {
+		"prefix": [
+			"va_eventSearchFieldFocus"
+		],
+		"body": [
+			"onSearchFieldFocus (searchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SearchField focus",
+		"isFileTemplate": false
+	},
+	"Va.SearchFieldBlur": {
+		"prefix": [
+			"va_eventSearchFieldBlur"
+		],
+		"body": [
+			"onSearchFieldBlur (searchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SearchField blur",
+		"isFileTemplate": false
+	},
+	"Va.SearchFieldClick": {
+		"prefix": [
+			"va_eventSearchFieldClick"
+		],
+		"body": [
+			"onSearchFieldClick (searchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SearchField click",
+		"isFileTemplate": false
+	},
+	"Va.SearchFieldContextmenu": {
+		"prefix": [
+			"va_eventSearchFieldContextmenu"
+		],
+		"body": [
+			"onSearchFieldContextmenu (searchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SearchField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.SearchFieldKeydown": {
+		"prefix": [
+			"va_eventSearchFieldKeydown"
+		],
+		"body": [
+			"onSearchFieldKeydown (searchfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SearchField keydown",
+		"isFileTemplate": false
+	},
+	"Va.SearchFieldKeyup": {
+		"prefix": [
+			"va_eventSearchFieldKeyup"
+		],
+		"body": [
+			"onSearchFieldKeyup (searchfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SearchField keyup",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFocus": {
+		"prefix": [
+			"va_eventComboboxFocus"
+		],
+		"body": [
+			"onComboboxFocus (combobox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox focus",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxBlur": {
+		"prefix": [
+			"va_eventComboboxBlur"
+		],
+		"body": [
+			"onComboboxBlur (combobox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox blur",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxClick": {
+		"prefix": [
+			"va_eventComboboxClick"
+		],
+		"body": [
+			"onComboboxClick (combobox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox click",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxContextmenu": {
+		"prefix": [
+			"va_eventComboboxContextmenu"
+		],
+		"body": [
+			"onComboboxContextmenu (combobox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxKeydown": {
+		"prefix": [
+			"va_eventComboboxKeydown"
+		],
+		"body": [
+			"onComboboxKeydown (combobox, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox keydown",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxKeyup": {
+		"prefix": [
+			"va_eventComboboxKeyup"
+		],
+		"body": [
+			"onComboboxKeyup (combobox, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.ComboboxSelect": {
+		"prefix": [
+			"va_eventComboboxSelect"
+		],
+		"body": [
+			"onComboboxSelect (combobox, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox select",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxExpand": {
+		"prefix": [
+			"va_eventComboboxExpand"
+		],
+		"body": [
+			"onComboboxExpand (combobox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox expand",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxCollapse": {
+		"prefix": [
+			"va_eventComboboxCollapse"
+		],
+		"body": [
+			"onComboboxCollapse (combobox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Combobox collapse",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldFocus": {
+		"prefix": [
+			"va_eventComboboxFieldFocus"
+		],
+		"body": [
+			"onComboboxFieldFocus (comboboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField focus",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldBlur": {
+		"prefix": [
+			"va_eventComboboxFieldBlur"
+		],
+		"body": [
+			"onComboboxFieldBlur (comboboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField blur",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldClick": {
+		"prefix": [
+			"va_eventComboboxFieldClick"
+		],
+		"body": [
+			"onComboboxFieldClick (comboboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField click",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldContextmenu": {
+		"prefix": [
+			"va_eventComboboxFieldContextmenu"
+		],
+		"body": [
+			"onComboboxFieldContextmenu (comboboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldKeydown": {
+		"prefix": [
+			"va_eventComboboxFieldKeydown"
+		],
+		"body": [
+			"onComboboxFieldKeydown (comboboxfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField keydown",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldKeyup": {
+		"prefix": [
+			"va_eventComboboxFieldKeyup"
+		],
+		"body": [
+			"onComboboxFieldKeyup (comboboxfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.ComboboxFieldSelect": {
+		"prefix": [
+			"va_eventComboboxFieldSelect"
+		],
+		"body": [
+			"onComboboxFieldSelect (comboboxfield, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField select",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldExpand": {
+		"prefix": [
+			"va_eventComboboxFieldExpand"
+		],
+		"body": [
+			"onComboboxFieldExpand (comboboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField expand",
+		"isFileTemplate": false
+	},
+	"Va.ComboboxFieldCollapse": {
+		"prefix": [
+			"va_eventComboboxFieldCollapse"
+		],
+		"body": [
+			"onComboboxFieldCollapse (comboboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ComboboxField collapse",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFocus": {
+		"prefix": [
+			"va_eventFilterboxFocus"
+		],
+		"body": [
+			"onFilterboxFocus (filterbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox focus",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxBlur": {
+		"prefix": [
+			"va_eventFilterboxBlur"
+		],
+		"body": [
+			"onFilterboxBlur (filterbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox blur",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxClick": {
+		"prefix": [
+			"va_eventFilterboxClick"
+		],
+		"body": [
+			"onFilterboxClick (filterbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox click",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxContextmenu": {
+		"prefix": [
+			"va_eventFilterboxContextmenu"
+		],
+		"body": [
+			"onFilterboxContextmenu (filterbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxKeydown": {
+		"prefix": [
+			"va_eventFilterboxKeydown"
+		],
+		"body": [
+			"onFilterboxKeydown (filterbox, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox keydown",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxKeyup": {
+		"prefix": [
+			"va_eventFilterboxKeyup"
+		],
+		"body": [
+			"onFilterboxKeyup (filterbox, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.FilterboxSelect": {
+		"prefix": [
+			"va_eventFilterboxSelect"
+		],
+		"body": [
+			"onFilterboxSelect (filterbox, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox select",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxExpand": {
+		"prefix": [
+			"va_eventFilterboxExpand"
+		],
+		"body": [
+			"onFilterboxExpand (filterbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox expand",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxCollapse": {
+		"prefix": [
+			"va_eventFilterboxCollapse"
+		],
+		"body": [
+			"onFilterboxCollapse (filterbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Filterbox collapse",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldFocus": {
+		"prefix": [
+			"va_eventFilterboxFieldFocus"
+		],
+		"body": [
+			"onFilterboxFieldFocus (filterboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField focus",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldBlur": {
+		"prefix": [
+			"va_eventFilterboxFieldBlur"
+		],
+		"body": [
+			"onFilterboxFieldBlur (filterboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField blur",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldClick": {
+		"prefix": [
+			"va_eventFilterboxFieldClick"
+		],
+		"body": [
+			"onFilterboxFieldClick (filterboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField click",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldContextmenu": {
+		"prefix": [
+			"va_eventFilterboxFieldContextmenu"
+		],
+		"body": [
+			"onFilterboxFieldContextmenu (filterboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldKeydown": {
+		"prefix": [
+			"va_eventFilterboxFieldKeydown"
+		],
+		"body": [
+			"onFilterboxFieldKeydown (filterboxfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField keydown",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldKeyup": {
+		"prefix": [
+			"va_eventFilterboxFieldKeyup"
+		],
+		"body": [
+			"onFilterboxFieldKeyup (filterboxfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.FilterboxFieldSelect": {
+		"prefix": [
+			"va_eventFilterboxFieldSelect"
+		],
+		"body": [
+			"onFilterboxFieldSelect (filterboxfield, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField select",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldExpand": {
+		"prefix": [
+			"va_eventFilterboxFieldExpand"
+		],
+		"body": [
+			"onFilterboxFieldExpand (filterboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField expand",
+		"isFileTemplate": false
+	},
+	"Va.FilterboxFieldCollapse": {
+		"prefix": [
+			"va_eventFilterboxFieldCollapse"
+		],
+		"body": [
+			"onFilterboxFieldCollapse (filterboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FilterboxField collapse",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerFocus": {
+		"prefix": [
+			"va_eventDatePickerFocus"
+		],
+		"body": [
+			"onDatePickerFocus (datepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker focus",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerBlur": {
+		"prefix": [
+			"va_eventDatePickerBlur"
+		],
+		"body": [
+			"onDatePickerBlur (datepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker blur",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerClick": {
+		"prefix": [
+			"va_eventDatePickerClick"
+		],
+		"body": [
+			"onDatePickerClick (datepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker click",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerContextmenu": {
+		"prefix": [
+			"va_eventDatePickerContextmenu"
+		],
+		"body": [
+			"onDatePickerContextmenu (datepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerKeydown": {
+		"prefix": [
+			"va_eventDatePickerKeydown"
+		],
+		"body": [
+			"onDatePickerKeydown (datepicker, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker keydown",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerKeyup": {
+		"prefix": [
+			"va_eventDatePickerKeyup"
+		],
+		"body": [
+			"onDatePickerKeyup (datepicker, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.DatePickerSelect": {
+		"prefix": [
+			"va_eventDatePickerSelect"
+		],
+		"body": [
+			"onDatePickerSelect (datepicker, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker select",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerExpand": {
+		"prefix": [
+			"va_eventDatePickerExpand"
+		],
+		"body": [
+			"onDatePickerExpand (datepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker expand",
+		"isFileTemplate": false
+	},
+	"Va.DatePickerCollapse": {
+		"prefix": [
+			"va_eventDatePickerCollapse"
+		],
+		"body": [
+			"onDatePickerCollapse (datepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DatePicker collapse",
+		"isFileTemplate": false
+	},
+"Va.DateFieldFocus": {
+		"prefix": [
+			"va_eventDateFieldFocus"
+		],
+		"body": [
+			"onDateFieldFocus (datefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField focus",
+		"isFileTemplate": false
+	},
+	"Va.DateFieldBlur": {
+		"prefix": [
+			"va_eventDateFieldBlur"
+		],
+		"body": [
+			"onDateFieldBlur (datefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField blur",
+		"isFileTemplate": false
+	},
+	"Va.DateFieldClick": {
+		"prefix": [
+			"va_eventDateFieldClick"
+		],
+		"body": [
+			"onDateFieldClick (datefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField click",
+		"isFileTemplate": false
+	},
+	"Va.DateFieldContextmenu": {
+		"prefix": [
+			"va_eventDateFieldContextmenu"
+		],
+		"body": [
+			"onDateFieldContextmenu (datefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.DateFieldKeydown": {
+		"prefix": [
+			"va_eventDateFieldKeydown"
+		],
+		"body": [
+			"onDateFieldKeydown (datefield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField keydown",
+		"isFileTemplate": false
+	},
+	"Va.DateFieldKeyup": {
+		"prefix": [
+			"va_eventDateFieldKeyup"
+		],
+		"body": [
+			"onDateFieldKeyup (datefield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.DateFieldSelect": {
+		"prefix": [
+			"va_eventDateFieldSelect"
+		],
+		"body": [
+			"onDateFieldSelect (datefield, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField select",
+		"isFileTemplate": false
+	},
+	"Va.DateFieldExpand": {
+		"prefix": [
+			"va_eventDateFieldExpand"
+		],
+		"body": [
+			"onDateFieldExpand (datefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField expand",
+		"isFileTemplate": false
+	},
+	"Va.DateFieldCollapse": {
+		"prefix": [
+			"va_eventDateFieldCollapse"
+		],
+		"body": [
+			"onDateFieldCollapse (datefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.DateField collapse",
+		"isFileTemplate": false
+	},	
+	"Va.TimePickerFocus": {
+		"prefix": [
+			"va_eventTimePickerFocus"
+		],
+		"body": [
+			"onTimePickerFocus (timepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker focus",
+		"isFileTemplate": false
+	},
+	"Va.TimePickerBlur": {
+		"prefix": [
+			"va_eventTimePickerBlur"
+		],
+		"body": [
+			"onTimePickerBlur (timepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker blur",
+		"isFileTemplate": false
+	},
+	"Va.TimePickerClick": {
+		"prefix": [
+			"va_eventTimePickerClick"
+		],
+		"body": [
+			"onTimePickerClick (timepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker click",
+		"isFileTemplate": false
+	},
+	"Va.TimePickerContextmenu": {
+		"prefix": [
+			"va_eventTimePickerContextmenu"
+		],
+		"body": [
+			"onTimePickerContextmenu (timepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.TimePickerKeydown": {
+		"prefix": [
+			"va_eventTimePickerKeydown"
+		],
+		"body": [
+			"onTimePickerKeydown (timepicker, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker keydown",
+		"isFileTemplate": false
+	},
+	"Va.TimePickerKeyup": {
+		"prefix": [
+			"va_eventTimePickerKeyup"
+		],
+		"body": [
+			"onTimePickerKeyup (timepicker, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.TimePickerSelect": {
+		"prefix": [
+			"va_eventTimePickerSelect"
+		],
+		"body": [
+			"onTimePickerSelect (timepicker, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker select",
+		"isFileTemplate": false
+	},
+	"Va.TimePickerExpand": {
+		"prefix": [
+			"va_eventTimePickerExpand"
+		],
+		"body": [
+			"onTimePickerExpand (timepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker expand",
+		"isFileTemplate": false
+	},
+	"Va.TimePickerCollapse": {
+		"prefix": [
+			"va_eventTimePickerCollapse"
+		],
+		"body": [
+			"onTimePickerCollapse (timepicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimePicker collapse",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldFocus": {
+		"prefix": [
+			"va_eventTimeFieldFocus"
+		],
+		"body": [
+			"onTimeFieldFocus (timefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField focus",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldBlur": {
+		"prefix": [
+			"va_eventTimeFieldBlur"
+		],
+		"body": [
+			"onTimeFieldBlur (timefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField blur",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldClick": {
+		"prefix": [
+			"va_eventTimeFieldClick"
+		],
+		"body": [
+			"onTimeFieldClick (timefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField click",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldContextmenu": {
+		"prefix": [
+			"va_eventTimeFieldContextmenu"
+		],
+		"body": [
+			"onTimeFieldContextmenu (timefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldKeydown": {
+		"prefix": [
+			"va_eventTimeFieldKeydown"
+		],
+		"body": [
+			"onTimeFieldKeydown (timefield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField keydown",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldKeyup": {
+		"prefix": [
+			"va_eventTimeFieldKeyup"
+		],
+		"body": [
+			"onTimeFieldKeyup (timefield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.TimeFieldSelect": {
+		"prefix": [
+			"va_eventTimeFieldSelect"
+		],
+		"body": [
+			"onTimeFieldSelect (timefield, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField select",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldExpand": {
+		"prefix": [
+			"va_eventTimeFieldExpand"
+		],
+		"body": [
+			"onTimeFieldExpand (timefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField expand",
+		"isFileTemplate": false
+	},
+	"Va.TimeFieldCollapse": {
+		"prefix": [
+			"va_eventTimeFieldCollapse"
+		],
+		"body": [
+			"onTimeFieldCollapse (timefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TimeField collapse",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerFocus": {
+		"prefix": [
+			"va_eventMonthPickerFocus"
+		],
+		"body": [
+			"onMonthPickerFocus (monthpicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker focus",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerBlur": {
+		"prefix": [
+			"va_eventMonthPickerBlur"
+		],
+		"body": [
+			"onMonthPickerBlur (monthpicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker blur",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerClick": {
+		"prefix": [
+			"va_eventMonthPickerClick"
+		],
+		"body": [
+			"onMonthPickerClick (monthpicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker click",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerContextmenu": {
+		"prefix": [
+			"va_eventMonthPickerContextmenu"
+		],
+		"body": [
+			"onMonthPickerContextmenu (monthpicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerKeydown": {
+		"prefix": [
+			"va_eventMonthPickerKeydown"
+		],
+		"body": [
+			"onMonthPickerKeydown (monthpicker, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker keydown",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerKeyup": {
+		"prefix": [
+			"va_eventMonthPickerKeyup"
+		],
+		"body": [
+			"onMonthPickerKeyup (monthpicker, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.MonthPickerSelect": {
+		"prefix": [
+			"va_eventMonthPickerSelect"
+		],
+		"body": [
+			"onMonthPickerSelect (monthpicker, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker select",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerExpand": {
+		"prefix": [
+			"va_eventMonthPickerExpand"
+		],
+		"body": [
+			"onMonthPickerExpand (monthpicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker expand",
+		"isFileTemplate": false
+	},
+	"Va.MonthPickerCollapse": {
+		"prefix": [
+			"va_eventMonthPickerCollapse"
+		],
+		"body": [
+			"onMonthPickerCollapse (monthpicker, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthPicker collapse",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldFocus": {
+		"prefix": [
+			"va_eventMonthFieldFocus"
+		],
+		"body": [
+			"onMonthFieldFocus (monthfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField focus",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldBlur": {
+		"prefix": [
+			"va_eventMonthFieldBlur"
+		],
+		"body": [
+			"onMonthFieldBlur (monthfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField blur",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldClick": {
+		"prefix": [
+			"va_eventMonthFieldClick"
+		],
+		"body": [
+			"onMonthFieldClick (monthfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField click",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldContextmenu": {
+		"prefix": [
+			"va_eventMonthFieldContextmenu"
+		],
+		"body": [
+			"onMonthFieldContextmenu (monthfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldKeydown": {
+		"prefix": [
+			"va_eventMonthFieldKeydown"
+		],
+		"body": [
+			"onMonthFieldKeydown (monthfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField keydown",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldKeyup": {
+		"prefix": [
+			"va_eventMonthFieldKeyup"
+		],
+		"body": [
+			"onMonthFieldKeyup (monthfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField keyup",
+		"isFileTemplate": false
+	},
+
+
+
+	"Va.MonthFieldSelect": {
+		"prefix": [
+			"va_eventMonthFieldSelect"
+		],
+		"body": [
+			"onMonthFieldSelect (monthfield, element, menuItem, data, isFolder, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField select",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldExpand": {
+		"prefix": [
+			"va_eventMonthFieldExpand"
+		],
+		"body": [
+			"onMonthFieldExpand (monthfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField expand",
+		"isFileTemplate": false
+	},
+	"Va.MonthFieldCollapse": {
+		"prefix": [
+			"va_eventMonthFieldCollapse"
+		],
+		"body": [
+			"onMonthFieldCollapse (monthfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.MonthField collapse",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFocus": {
+		"prefix": [
+			"va_eventCheckboxFocus"
+		],
+		"body": [
+			"onCheckboxFocus (checkbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Checkbox focus",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxBlur": {
+		"prefix": [
+			"va_eventCheckboxBlur"
+		],
+		"body": [
+			"onCheckboxBlur (checkbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Checkbox blur",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxClick": {
+		"prefix": [
+			"va_eventCheckboxClick"
+		],
+		"body": [
+			"onCheckboxClick (checkbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Checkbox click",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxContextmenu": {
+		"prefix": [
+			"va_eventCheckboxContextmenu"
+		],
+		"body": [
+			"onCheckboxContextmenu (checkbox, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Checkbox contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxKeydown": {
+		"prefix": [
+			"va_eventCheckboxKeydown"
+		],
+		"body": [
+			"onCheckboxKeydown (checkbox, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Checkbox keydown",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxKeyup": {
+		"prefix": [
+			"va_eventCheckboxKeyup"
+		],
+		"body": [
+			"onCheckboxKeyup (checkbox, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Checkbox keyup",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxChange": {
+		"prefix": [
+			"va_eventCheckboxChange"
+		],
+		"body": [
+			"onCheckboxChange (checkbox, element, checked, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Checkbox change",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFieldFocus": {
+		"prefix": [
+			"va_eventCheckboxFieldFocus"
+		],
+		"body": [
+			"onCheckboxFieldFocus (checkboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxField focus",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFieldBlur": {
+		"prefix": [
+			"va_eventCheckboxFieldBlur"
+		],
+		"body": [
+			"onCheckboxFieldBlur (checkboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxField blur",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFieldClick": {
+		"prefix": [
+			"va_eventCheckboxFieldClick"
+		],
+		"body": [
+			"onCheckboxFieldClick (checkboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxField click",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFieldContextmenu": {
+		"prefix": [
+			"va_eventCheckboxFieldContextmenu"
+		],
+		"body": [
+			"onCheckboxFieldContextmenu (checkboxfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFieldKeydown": {
+		"prefix": [
+			"va_eventCheckboxFieldKeydown"
+		],
+		"body": [
+			"onCheckboxFieldKeydown (checkboxfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxField keydown",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFieldKeyup": {
+		"prefix": [
+			"va_eventCheckboxFieldKeyup"
+		],
+		"body": [
+			"onCheckboxFieldKeyup (checkboxfield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxField keyup",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxFieldChange": {
+		"prefix": [
+			"va_eventCheckboxFieldChange"
+		],
+		"body": [
+			"onCheckboxFieldChange (checkbox, element, checked, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxField change",
+		"isFileTemplate": false
+	},
+	"Va.RadioFocus": {
+		"prefix": [
+			"va_eventRadioFocus"
+		],
+		"body": [
+			"onRadioFocus (radio, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Radio focus",
+		"isFileTemplate": false
+	},
+	"Va.RadioBlur": {
+		"prefix": [
+			"va_eventRadioBlur"
+		],
+		"body": [
+			"onRadioBlur (radio, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Radio blur",
+		"isFileTemplate": false
+	},
+	"Va.RadioClick": {
+		"prefix": [
+			"va_eventRadioClick"
+		],
+		"body": [
+			"onRadioClick (radio, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Radio click",
+		"isFileTemplate": false
+	},
+	"Va.RadioContextmenu": {
+		"prefix": [
+			"va_eventRadioContextmenu"
+		],
+		"body": [
+			"onRadioContextmenu (radio, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Radio contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.RadioKeydown": {
+		"prefix": [
+			"va_eventRadioKeydown"
+		],
+		"body": [
+			"onRadioKeydown (radio, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Radio keydown",
+		"isFileTemplate": false
+	},
+	"Va.RadioKeyup": {
+		"prefix": [
+			"va_eventRadioKeyup"
+		],
+		"body": [
+			"onRadioKeyup (radio, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Radio keyup",
+		"isFileTemplate": false
+	},
+	"Va.RadioFieldFocus": {
+		"prefix": [
+			"va_eventRadioFieldFocus"
+		],
+		"body": [
+			"onRadioFieldFocus (radiofield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.RadioField focus",
+		"isFileTemplate": false
+	},
+	"Va.RadioFieldBlur": {
+		"prefix": [
+			"va_eventRadioFieldBlur"
+		],
+		"body": [
+			"onRadioFieldBlur (radiofield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.RadioField blur",
+		"isFileTemplate": false
+	},
+	"Va.RadioFieldClick": {
+		"prefix": [
+			"va_eventRadioFieldClick"
+		],
+		"body": [
+			"onRadioFieldClick (radiofield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.RadioField click",
+		"isFileTemplate": false
+	},
+	"Va.RadioFieldContextmenu": {
+		"prefix": [
+			"va_eventRadioFieldContextmenu"
+		],
+		"body": [
+			"onRadioFieldContextmenu (radiofield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.RadioField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.RadioFieldKeydown": {
+		"prefix": [
+			"va_eventRadioFieldKeydown"
+		],
+		"body": [
+			"onRadioFieldKeydown (radiofield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.RadioField keydown",
+		"isFileTemplate": false
+	},
+	"Va.RadioFieldKeyup": {
+		"prefix": [
+			"va_eventRadioFieldKeyup"
+		],
+		"body": [
+			"onRadioFieldKeyup (radiofield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.RadioField keyup",
+		"isFileTemplate": false
+	},
+	"Va.CheckboxGroupChange": {
+		"prefix": [
+			"va_eventCheckboxGroupChange"
+		],
+		"body": [
+			"onCheckboxGroupChange (checkboxGroup, element, value, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxGroup change",
+		"isFileTemplate": false
+	},
+	"Va.RadioGroupChange": {
+		"prefix": [
+			"va_eventCheckboxGroupChange"
+		],
+		"body": [
+			"onCheckboxGroupChange (checkboxGroup, element, value, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CheckboxGroup change",
+		"isFileTemplate": false
+	},	
+"Va.SliderFocus": {
+		"prefix": [
+			"va_eventSliderFocus"
+		],
+		"body": [
+			"onSliderFocus (slider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Slider focus",
+		"isFileTemplate": false
+	},
+	"Va.SliderBlur": {
+		"prefix": [
+			"va_eventSliderBlur"
+		],
+		"body": [
+			"onSliderBlur (slider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Slider blur",
+		"isFileTemplate": false
+	},
+	"Va.SliderClick": {
+		"prefix": [
+			"va_eventSliderClick"
+		],
+		"body": [
+			"onSliderClick (slider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Slider click",
+		"isFileTemplate": false
+	},
+	"Va.SliderChange": {
+		"prefix": [
+			"va_eventSliderChange"
+		],
+		"body": [
+			"onSliderChange (slider, element, value, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Slider change",
+		"isFileTemplate": false
+	},	
+	"Va.SliderFieldFocus": {
+		"prefix": [
+			"va_eventSliderFieldFocus"
+		],
+		"body": [
+			"onSliderFieldFocus (sliderfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SliderField focus",
+		"isFileTemplate": false
+	},
+	"Va.SliderFieldBlur": {
+		"prefix": [
+			"va_eventSliderFieldBlur"
+		],
+		"body": [
+			"onSliderFieldBlur (sliderfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SliderField blur",
+		"isFileTemplate": false
+	},
+	"Va.SliderFieldClick": {
+		"prefix": [
+			"va_eventSliderFieldClick"
+		],
+		"body": [
+			"onSliderFieldClick (sliderfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SliderField click",
+		"isFileTemplate": false
+	},
+	"Va.SliderFieldChange": {
+		"prefix": [
+			"va_eventSliderFieldChange"
+		],
+		"body": [
+			"onSliderFieldChange (sliderfield, element, value, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SliderField change",
+		"isFileTemplate": false
+	},	
+"Va.StarSliderFocus": {
+		"prefix": [
+			"va_eventStarSliderFocus"
+		],
+		"body": [
+			"onStarSliderFocus (starslider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSlider focus",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderBlur": {
+		"prefix": [
+			"va_eventStarSliderBlur"
+		],
+		"body": [
+			"onStarSliderBlur (starslider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSlider blur",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderClick": {
+		"prefix": [
+			"va_eventStarSliderClick"
+		],
+		"body": [
+			"onStarSliderClick (starslider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSlider click",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderContextmenu": {
+		"prefix": [
+			"va_eventStarSliderContextmenu"
+		],
+		"body": [
+			"onStarSliderContextmenu (starslider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSlider contextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.StarSliderChange": {
+		"prefix": [
+			"va_eventStarSliderChange"
+		],
+		"body": [
+			"onStarSliderChange (starslider, element, value, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSlider change",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderFieldFocus": {
+		"prefix": [
+			"va_eventStarSliderFieldFocus"
+		],
+		"body": [
+			"onStarSliderFieldFocus (starsliderfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSliderField focus",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderFieldBlur": {
+		"prefix": [
+			"va_eventStarSliderFieldBlur"
+		],
+		"body": [
+			"onStarSliderFieldBlur (starsliderfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSliderField blur",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderFieldClick": {
+		"prefix": [
+			"va_eventStarSliderFieldClick"
+		],
+		"body": [
+			"onStarSliderFieldClick (starsliderfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSliderField click",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderFieldContextmenu": {
+		"prefix": [
+			"va_eventStarSliderFieldContextmenu"
+		],
+		"body": [
+			"onStarSliderFieldContextmenu (starsliderfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSliderField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.StarSliderFieldChange": {
+		"prefix": [
+			"va_eventStarSliderFieldChange"
+		],
+		"body": [
+			"onStarSliderFieldChange (starsliderfield, element, value, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StarSliderField change",
+		"isFileTemplate": false
+	},	
+"Va.SwitchFocus": {
+		"prefix": [
+			"va_eventSwitchFocus"
+		],
+		"body": [
+			"onSwitchFocus (switch, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Switch focus",
+		"isFileTemplate": false
+	},
+	"Va.SwitchBlur": {
+		"prefix": [
+			"va_eventSwitchBlur"
+		],
+		"body": [
+			"onSwitchBlur (switch, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Switch blur",
+		"isFileTemplate": false
+	},
+	"Va.SwitchClick": {
+		"prefix": [
+			"va_eventSwitchClick"
+		],
+		"body": [
+			"onSwitchClick (switch, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Switch click",
+		"isFileTemplate": false
+	},
+	"Va.SwitchContextmenu": {
+		"prefix": [
+			"va_eventSwitchContextmenu"
+		],
+		"body": [
+			"onSwitchContextmenu (switch, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Switch contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.SwitchChange": {
+		"prefix": [
+			"va_eventSwitchChange"
+		],
+		"body": [
+			"onSwitchChange (switch, element, checked, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Switch change",
+		"isFileTemplate": false
+	},
+"Va.SwitchFieldFocus": {
+		"prefix": [
+			"va_eventSwitchFieldFocus"
+		],
+		"body": [
+			"onSwitchFieldFocus (switchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SwitchField focus",
+		"isFileTemplate": false
+	},
+	"Va.SwitchFieldBlur": {
+		"prefix": [
+			"va_eventSwitchFieldBlur"
+		],
+		"body": [
+			"onSwitchFieldBlur (switchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SwitchField blur",
+		"isFileTemplate": false
+	},
+	"Va.SwitchFieldClick": {
+		"prefix": [
+			"va_eventSwitchFieldClick"
+		],
+		"body": [
+			"onSwitchFieldClick (switchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SwitchField click",
+		"isFileTemplate": false
+	},
+	"Va.SwitchFieldContextmenu": {
+		"prefix": [
+			"va_eventSwitchFieldContextmenu"
+		],
+		"body": [
+			"onSwitchFieldContextmenu (switchfield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SwitchField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.SwitchFieldChange": {
+		"prefix": [
+			"va_eventSwitchFieldChange"
+		],
+		"body": [
+			"onSwitchFieldChange (switchfield, element, checked, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SwitchField change",
+		"isFileTemplate": false
+	},	
+"Va.TextareaFocus": {
+		"prefix": [
+			"va_eventTextareaFocus"
+		],
+		"body": [
+			"onTextareaFocus (textarea, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Textarea focus",
+		"isFileTemplate": false
+	},
+	"Va.TextareaBlur": {
+		"prefix": [
+			"va_eventTextareaBlur"
+		],
+		"body": [
+			"onTextareaBlur (textarea, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Textarea blur",
+		"isFileTemplate": false
+	},
+	"Va.TextareaClick": {
+		"prefix": [
+			"va_eventTextareaClick"
+		],
+		"body": [
+			"onTextareaClick (textarea, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Textarea click",
+		"isFileTemplate": false
+	},
+	"Va.TextareaContextmenu": {
+		"prefix": [
+			"va_eventTextareaContextmenu"
+		],
+		"body": [
+			"onTextareaContextmenu (textarea, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Textarea contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.TextareaChange": {
+		"prefix": [
+			"va_eventTextareaChange"
+		],
+		"body": [
+			"onTextareaChange (textarea, element, checked, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Textarea change",
+		"isFileTemplate": false
+	},
+
+	"Va.TextareaKeydown": {
+		"prefix": [
+			"va_eventTextareaKeydown"
+		],
+		"body": [
+			"onTextareaKeydown (textarea, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Textarea keydown",
+		"isFileTemplate": false
+	},
+	"Va.TextareaKeyup": {
+		"prefix": [
+			"va_eventTextareaKeyup"
+		],
+		"body": [
+			"onTextareaKeyup (textarea, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Textarea keyup",
+		"isFileTemplate": false
+	},
+"Va.TextareaFieldFocus": {
+		"prefix": [
+			"va_eventTextareaFieldFocus"
+		],
+		"body": [
+			"onTextareaFieldFocus (textareafield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TextareaField focus",
+		"isFileTemplate": false
+	},
+	"Va.TextareaFieldBlur": {
+		"prefix": [
+			"va_eventTextareaFieldBlur"
+		],
+		"body": [
+			"onTextareaFieldBlur (textareafield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TextareaField blur",
+		"isFileTemplate": false
+	},
+	"Va.TextareaFieldClick": {
+		"prefix": [
+			"va_eventTextareaFieldClick"
+		],
+		"body": [
+			"onTextareaFieldClick (textareafield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TextareaField click",
+		"isFileTemplate": false
+	},
+	"Va.TextareaFieldContextmenu": {
+		"prefix": [
+			"va_eventTextareaFieldContextmenu"
+		],
+		"body": [
+			"onTextareaFieldContextmenu (textareafield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TextareaField contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.TextareaFieldChange": {
+		"prefix": [
+			"va_eventTextareaFieldChange"
+		],
+		"body": [
+			"onTextareaFieldChange (textareafield, element, checked, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TextareaField change",
+		"isFileTemplate": false
+	},
+
+	"Va.TextareaFieldKeydown": {
+		"prefix": [
+			"va_eventTextareaFieldKeydown"
+		],
+		"body": [
+			"onTextareaFieldKeydown (textareafield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TextareaField keydown",
+		"isFileTemplate": false
+	},
+	"Va.TextareaFieldKeyup": {
+		"prefix": [
+			"va_eventTextareaFieldKeyup"
+		],
+		"body": [
+			"onTextareaFieldKeyup (textareafield, element, keyCode, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TextareaField keyup",
+		"isFileTemplate": false
+	},
+	"Va.FileClick": {
+		"prefix": [
+			"va_eventFileClick"
+		],
+		"body": [
+			"onFileClick (file, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.File click",
+		"isFileTemplate": false
+	},
+	"Va.FileChange": {
+		"prefix": [
+			"va_eventFileChange"
+		],
+		"body": [
+			"onFileChange (file, element, files, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.File change",
+		"isFileTemplate": false
+	},
+	"Va.FileReset": {
+		"prefix": [
+			"va_eventFileReset"
+		],
+		"body": [
+			"onFileReset (file, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.File reset",
+		"isFileTemplate": false
+	},	
+	"Va.FileFieldClick": {
+		"prefix": [
+			"va_eventFileFieldClick"
+		],
+		"body": [
+			"onFileFieldClick (filefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileField click",
+		"isFileTemplate": false
+	},
+	"Va.FileFieldReset": {
+		"prefix": [
+			"va_eventFileFieldReset"
+		],
+		"body": [
+			"onFileFieldReset (filefield, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileField reset",
+		"isFileTemplate": false
+	},
+	"Va.FileFieldChange": {
+		"prefix": [
+			"va_eventFileFieldChange"
+		],
+		"body": [
+			"onFileFieldChange (filefield, element, files, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileField change",
+		"isFileTemplate": false
+	},		
+	"Va.FileDropUploadFileDrop": {
+		"prefix": [
+			"va_eventFileDropUploadFileDrop"
+		],
+		"body": [
+			"onFileDropUploadFileDrop (fileDropUpload, element,  result, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileDropUpload fileDrop",
+		"isFileTemplate": false
+	},
+	"Va.FileDropUploadChange": {
+		"prefix": [
+			"va_eventFileDropUploadChange"
+		],
+		"body": [
+			"onFileDropUploadChange (fileDropUpload, element, files, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileDropUpload change",
+		"isFileTemplate": false
+	},	
+	"Va.FileDropUploadFieldFileDrop": {
+		"prefix": [
+			"va_eventFileDropUploadFieldFileDrop"
+		],
+		"body": [
+			"onFileDropUploadFieldFileDrop (fileDropUploadField, element,  result, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileDropUploadField fileDrop",
+		"isFileTemplate": false
+	},
+	"Va.FileDropUploadFieldChange": {
+		"prefix": [
+			"va_eventFileDropUploadFieldChange"
+		],
+		"body": [
+			"onFileDropUploadFieldChange (fileDropUploadField, element, files, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.FileDropUploadField change",
+		"isFileTemplate": false
+	},
+	"Va.LabelClick": {
+		"prefix": [
+			"va_eventLabelClick"
+		],
+		"body": [
+			"onLabelClick (label, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Label click",
+		"isFileTemplate": false
+	},
+	"Va.LabelContextmenu": {
+		"prefix": [
+			"va_eventLabelContextmenu"
+		],
+		"body": [
+			"onLabelContextmenu (label, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Label contextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.ValidationClick": {
+		"prefix": [
+			"va_eventValidationClick"
+		],
+		"body": [
+			"onValidationClick (validation, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Validation click",
+		"isFileTemplate": false
+	},
+	"Va.ValidationContextmenu": {
+		"prefix": [
+			"va_eventValidationContextmenu"
+		],
+		"body": [
+			"onValidationContextmenu (validation, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Validation contextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.ValidationIconClick": {
+		"prefix": [
+			"va_eventValidationIconClick"
+		],
+		"body": [
+			"onValidationIconClick (validation, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Validation iconClick",
+		"isFileTemplate": false
+	},
+	"Va.ValidationIconContextmenu": {
+		"prefix": [
+			"va_eventValidationContextmenu"
+		],
+		"body": [
+			"onValidationIconContextmenu (validation, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Validation iconContextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.MainClick": {
+		"prefix": [
+			"va_eventMainClick"
+		],
+		"body": [
+			"onMainClick (main, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Main click",
+		"isFileTemplate": false
+	},
+	"Va.MainContextmenu": {
+		"prefix": [
+			"va_eventMainContextmenu"
+		],
+		"body": [
+			"onMainContextmenu (main, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Main contextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.ArticleClick": {
+		"prefix": [
+			"va_eventArticleClick"
+		],
+		"body": [
+			"onArticleClick (article, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Article click",
+		"isFileTemplate": false
+	},
+	"Va.ArticleContextmenu": {
+		"prefix": [
+			"va_eventArticleContextmenu"
+		],
+		"body": [
+			"onArticleContextmenu (article, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Article contextmenu",
+		"isFileTemplate": false
+	},	
+"Va.SectionClick": {
+		"prefix": [
+			"va_eventSectionClick"
+		],
+		"body": [
+			"onSectionClick (section, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Section click",
+		"isFileTemplate": false
+	},
+	"Va.SectionContextmenu": {
+		"prefix": [
+			"va_eventSectionContextmenu"
+		],
+		"body": [
+			"onSectionContextmenu (section, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Section contextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.AsideClick": {
+		"prefix": [
+			"va_eventAsideClick"
+		],
+		"body": [
+			"onAsideClick (aside, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Aside click",
+		"isFileTemplate": false
+	},
+	"Va.AsideContextmenu": {
+		"prefix": [
+			"va_eventAsideContextmenu"
+		],
+		"body": [
+			"onAsideContextmenu (aside, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Aside contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.HeaderClick": {
+		"prefix": [
+			"va_eventHeaderClick"
+		],
+		"body": [
+			"onHeaderClick (header, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Header click",
+		"isFileTemplate": false
+	},
+	"Va.HeaderContextmenu": {
+		"prefix": [
+			"va_eventHeaderContextmenu"
+		],
+		"body": [
+			"onHeaderContextmenu (header, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Header contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.FooterClick": {
+		"prefix": [
+			"va_eventFooterClick"
+		],
+		"body": [
+			"onFooterClick (footer, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Footer click",
+		"isFileTemplate": false
+	},
+	"Va.FooterContextmenu": {
+		"prefix": [
+			"va_eventFooterContextmenu"
+		],
+		"body": [
+			"onFooterContextmenu (footer, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Footer contextmenu",
+		"isFileTemplate": false
+	},
+
+	"Va.DetailsClick": {
+		"prefix": [
+			"va_eventDetailsClick"
+		],
+		"body": [
+			"onDetailsClick (details, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Details click",
+		"isFileTemplate": false
+	},
+	"Va.DetailsContextmenu": {
+		"prefix": [
+			"va_eventDetailsContextmenu"
+		],
+		"body": [
+			"onDetailsContextmenu (details, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Details contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.DetailsExpand": {
+		"prefix": [
+			"va_eventDetailsExpand"
+		],
+		"body": [
+			"onDetailsExpand (details, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Details expand",
+		"isFileTemplate": false
+	},
+	"Va.DetailsCollapse": {
+		"prefix": [
+			"va_eventDetailsCollapse"
+		],
+		"body": [
+			"onDetailsCollapse (details, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Details collapse",
+		"isFileTemplate": false
+	},
+	"Va.H1Click": {
+		"prefix": [
+			"va_eventH1Click"
+		],
+		"body": [
+			"onH1Click (h1, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H1 click",
+		"isFileTemplate": false
+	},
+	"Va.H1Contextmenu": {
+		"prefix": [
+			"va_eventH1Contextmenu"
+		],
+		"body": [
+			"onH1Contextmenu (h1, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H1 contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.H2Click": {
+		"prefix": [
+			"va_eventH2Click"
+		],
+		"body": [
+			"onH2Click (h2, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H2 click",
+		"isFileTemplate": false
+	},
+	"Va.H2Contextmenu": {
+		"prefix": [
+			"va_eventH2Contextmenu"
+		],
+		"body": [
+			"onH2Contextmenu (h2, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H2 contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.H3Click": {
+		"prefix": [
+			"va_eventH3Click"
+		],
+		"body": [
+			"onH3Click (h3, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H3 click",
+		"isFileTemplate": false
+	},
+	"Va.H3Contextmenu": {
+		"prefix": [
+			"va_eventH3Contextmenu"
+		],
+		"body": [
+			"onH3Contextmenu (h3, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H3 contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.H4Click": {
+		"prefix": [
+			"va_eventH4Click"
+		],
+		"body": [
+			"onH4Click (h4, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H4 click",
+		"isFileTemplate": false
+	},
+	"Va.H4Contextmenu": {
+		"prefix": [
+			"va_eventH4Contextmenu"
+		],
+		"body": [
+			"onH4Contextmenu (h4, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H4 contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.H5Blur": {
+		"prefix": [
+			"va_eventH5Blur"
+		],
+		"body": [
+			"onH5Blur (h5, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H5 blur",
+		"isFileTemplate": false
+	},
+	"Va.H5Click": {
+		"prefix": [
+			"va_eventH5Click"
+		],
+		"body": [
+			"onH5Click (h5, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H5 click",
+		"isFileTemplate": false
+	},
+	"Va.H6Click": {
+		"prefix": [
+			"va_eventH6Click"
+		],
+		"body": [
+			"onH6Click (h6, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H6 click",
+		"isFileTemplate": false
+	},
+	"Va.H6Contextmenu": {
+		"prefix": [
+			"va_eventH6Contextmenu"
+		],
+		"body": [
+			"onH6Contextmenu (h6, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.H6 contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.DivClick": {
+		"prefix": [
+			"va_eventDivClick"
+		],
+		"body": [
+			"onDivClick (Div, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Div click",
+		"isFileTemplate": false
+	},
+	"Va.DivContextmenu": {
+		"prefix": [
+			"va_eventDivContextmenu"
+		],
+		"body": [
+			"onDivContextmenu (Div, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Div contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.SpanClick": {
+		"prefix": [
+			"va_eventSpanClick"
+		],
+		"body": [
+			"onSpanClick (Span, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Span click",
+		"isFileTemplate": false
+	},
+	"Va.SpanContextmenu": {
+		"prefix": [
+			"va_eventSpanContextmenu"
+		],
+		"body": [
+			"onSpanContextmenu (Span, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Span contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ImageClick": {
+		"prefix": [
+			"va_eventImageClick"
+		],
+		"body": [
+			"onImageClick (Image, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Image click",
+		"isFileTemplate": false
+	},
+	"Va.ImageContextmenu": {
+		"prefix": [
+			"va_eventImageContextmenu"
+		],
+		"body": [
+			"onImageContextmenu (Image, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Image contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.AvatarClick": {
+		"prefix": [
+			"va_eventAvatarClick"
+		],
+		"body": [
+			"onAvatarClick (Avatar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Avatar click",
+		"isFileTemplate": false
+	},
+	"Va.AvatarContextmenu": {
+		"prefix": [
+			"va_eventAvatarContextmenu"
+		],
+		"body": [
+			"onAvatarContextmenu (Avatar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Avatar contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.AvatarBadgeClick": {
+		"prefix": [
+			"va_eventAvatarBadgeClick"
+		],
+		"body": [
+			"onAvatarBadgeClick (Avatar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Avatar badgeClick",
+		"isFileTemplate": false
+	},
+	"Va.AvatarBadgeContextmenu": {
+		"prefix": [
+			"va_eventAvatarBadgeContextmenu"
+		],
+		"body": [
+			"onAvatarBadgeContextmenu (Avatar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Avatar badgeContextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.AvatarGroupExpand": {
+		"prefix": [
+			"va_eventAvatarGroupExpand"
+		],
+		"body": [
+			"onAvatarGroupExpand (AvatarGroup, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.AvatarGroup expand",
+		"isFileTemplate": false
+	},
+	"Va.AvatarGroupCollapse": {
+		"prefix": [
+			"va_eventAvatarGroupCollapse"
+		],
+		"body": [
+			"onAvatarGroupCollapse (AvatarGroup, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.AvatarGroup collapse",
+		"isFileTemplate": false
+	},
+	"Va.PersonaClick": {
+		"prefix": [
+			"va_eventPersonaClick"
+		],
+		"body": [
+			"onPersonaClick (Persona, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Persona click",
+		"isFileTemplate": false
+	},
+	"Va.PersonaContextmenu": {
+		"prefix": [
+			"va_eventPersonaContextmenu"
+		],
+		"body": [
+			"onPersonaContextmenu (Persona, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Persona contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.PersonaAvatarClick": {
+		"prefix": [
+			"va_eventPersonaAvatarClick"
+		],
+		"body": [
+			"onPersonaAvatarClick (persona, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Persona avatarClick",
+		"isFileTemplate": false
+	},
+	"Va.PersonaAvatarContextmenu": {
+		"prefix": [
+			"va_eventPersonaAvatarContextmenu"
+		],
+		"body": [
+			"onPersonaAvatarContextmenu (persona, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Persona avatarContextmenu",
+		"isFileTemplate": false
+	},
+	"Va.PersonaBadgeClick": {
+		"prefix": [
+			"va_eventPersonaBadgeClick"
+		],
+		"body": [
+			"onPersonaBadgeClick (persona, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Persona badgeClick",
+		"isFileTemplate": false
+	},
+	"Va.PersonaBadgeContextmenu": {
+		"prefix": [
+			"va_eventPersonaBadgeContextmenu"
+		],
+		"body": [
+			"onPersonaBadgeContextmenu (persona, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Persona badgeContextmenu",
+		"isFileTemplate": false
+	},
+	"Va.BadgeClick": {
+		"prefix": [
+			"va_eventBadgeClick"
+		],
+		"body": [
+			"onBadgeClick (badge, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Badge click",
+		"isFileTemplate": false
+	},
+	"Va.BadgeContextmenu": {
+		"prefix": [
+			"va_eventBadgeContextmenu"
+		],
+		"body": [
+			"onBadgeContextmenu (badge, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Badge contextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.ToolbarClick": {
+		"prefix": [
+			"va_eventToolbarClick"
+		],
+		"body": [
+			"onToolbarClick (toolbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Toolbar click",
+		"isFileTemplate": false
+	},
+	"Va.ToolbarContextmenu": {
+		"prefix": [
+			"va_eventToolbarContextmenu"
+		],
+		"body": [
+			"onToolbarContextmenu (toolbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Toolbar contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ToolbarPopClick": {
+		"prefix": [
+			"va_eventToolbarPopClick"
+		],
+		"body": [
+			"onToolbarPopClick (toolbarpop, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToolbarPop click",
+		"isFileTemplate": false
+	},
+	"Va.ToolbarPopContextmenu": {
+		"prefix": [
+			"va_eventToolbarPopContextmenu"
+		],
+		"body": [
+			"onToolbarPopContextmenu (toolbarPop, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToolbarPop contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.ToolbarPopExpand": {
+		"prefix": [
+			"va_eventToolbarPopExpand"
+		],
+		"body": [
+			"onToolbarPopExpand (toolbarPop, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToolbarPop expand",
+		"isFileTemplate": false
+	},
+	"Va.ToolbarPopCollapse": {
+		"prefix": [
+			"va_eventToolbarPopCollapse"
+		],
+		"body": [
+			"onToolbarPopCollapse (toolbarPop, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ToolbarPop collapse",
+		"isFileTemplate": false
+	},
+	"Va.NavigationMenuBarExpand": {
+		"prefix": [
+			"va_eventNavigationMenuBarExpand"
+		],
+		"body": [
+			"onNavigationMenuBarExpand (navigationMenuBar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NavigationMenuBar expand",
+		"isFileTemplate": false
+	},
+	"Va.NavigationMenuBarCollapse": {
+		"prefix": [
+			"va_eventNavigationMenuBarCollapse"
+		],
+		"body": [
+			"onNavigationMenuBarCollapse (navigationMenuBar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.NavigationMenuBar collapse",
+		"isFileTemplate": false
+	},
+	"Va.ResponsiveNavTitleClick": {
+		"prefix": [
+			"va_eventResponsiveNavTitleClick"
+		],
+		"body": [
+			"onResponsiveNavTitleClick (responsiveNav, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ResponsiveNav titleClick",
+		"isFileTemplate": false
+	},
+	"Va.BreadcrumbClick": {
+		"prefix": [
+			"va_eventBreadcrumbClick"
+		],
+		"body": [
+			"onBreadcrumbClick (breadcrumb, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Breadcrumb click",
+		"isFileTemplate": false
+	},
+	"Va.BreadcrumbContextmenu": {
+		"prefix": [
+			"va_eventBreadcrumbContextmenu"
+		],
+		"body": [
+			"onBreadcrumbContextmenu (breadcrumb, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Breadcrumb contextmenu",
+		"isFileTemplate": false
+	},
+	
+	"Va.BreadcrumbSelect": {
+		"prefix": [
+			"va_eventBreadcrumbSelect"
+		],
+		"body": [
+			"onBreadcrumbSelect (breadcrumb, element, childComponent, key, data, index, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Breadcrumb select",
+		"isFileTemplate": false
+	},
+	"Va.BreadcrumbExpand": {
+		"prefix": [
+			"va_eventBreadcrumbExpand"
+		],
+		"body": [
+			"onBreadcrumbExpand (breadcrumb, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Breadcrumb expand",
+		"isFileTemplate": false
+	},
+	"Va.BreadcrumbCollapse": {
+		"prefix": [
+			"va_eventBreadcrumbCollapse"
+		],
+		"body": [
+			"onBreadcrumbCollapse (breadcrumb, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Breadcrumb collapse",
+		"isFileTemplate": false
+	},
+	"Va.StepClick": {
+		"prefix": [
+			"va_eventStepClick"
+		],
+		"body": [
+			"onStepClick (step, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Step click",
+		"isFileTemplate": false
+	},
+	"Va.StepContextmenu": {
+		"prefix": [
+			"va_eventStepContextmenu"
+		],
+		"body": [
+			"onStepContextmenu (step, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Step contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.StepIndicatorClick": {
+		"prefix": [
+			"va_eventStepIndicatorClick"
+		],
+		"body": [
+			"onStepIndicatorClick (stepIndicator, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StepIndicator click",
+		"isFileTemplate": false
+	},
+	"Va.StepIndicatorContextmenu": {
+		"prefix": [
+			"va_eventStepIndicatorContextmenu"
+		],
+		"body": [
+			"onStepIndicatorContextmenu (stepIndicator, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.StepIndicator contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.SpinnerClick": {
+		"prefix": [
+			"va_eventSpinnerClick"
+		],
+		"body": [
+			"onSpinnerClick (spinner, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Spinner click",
+		"isFileTemplate": false
+	},
+	"Va.SpinnerContextmenu": {
+		"prefix": [
+			"va_eventSpinnerContextmenu"
+		],
+		"body": [
+			"onSpinnerContextmenu (spinner, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Spinner contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.DividerClick": {
+		"prefix": [
+			"va_eventDividerClick"
+		],
+		"body": [
+			"onDividerClick (divider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Divider click",
+		"isFileTemplate": false
+	},
+	"Va.DividerDblclick": {
+		"prefix": [
+			"va_eventDividerDblclick"
+		],
+		"body": [
+			"onDividerDblclick (divider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Divider dblclick",
+		"isFileTemplate": false
+	},
+	"Va.DividerContextmenu": {
+		"prefix": [
+			"va_eventDividerContextmenu"
+		],
+		"body": [
+			"onDividerContextmenu (divider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Divider contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.DividerExpand": {
+		"prefix": [
+			"va_eventDividerExpand"
+		],
+		"body": [
+			"onDividerExpand (divider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Divider expand",
+		"isFileTemplate": false
+	},
+	"Va.DividerCollapse": {
+		"prefix": [
+			"va_eventDividerCollapse"
+		],
+		"body": [
+			"onDividerCollapse (divider, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Divider collapse",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarClick": {
+		"prefix": [
+			"va_eventProgressBarClick"
+		],
+		"body": [
+			"onProgressBarClick (progressBar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar click",
+		"isFileTemplate": false
+	},
+	"Va.ProgressBarContextmenu": {
+		"prefix": [
+			"va_eventProgressBarContextmenu"
+		],
+		"body": [
+			"onProgressBarContextmenu (Progressbar, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ProgressBar contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.VideoClick": {
+		"prefix": [
+			"va_eventVideoClick"
+		],
+		"body": [
+			"onVideoClick (video, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Video click",
+		"isFileTemplate": false
+	},
+	"Va.VideoContextmenu": {
+		"prefix": [
+			"va_eventVideoContextmenu"
+		],
+		"body": [
+			"onVideoContextmenu (video, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Video contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.AudioClick": {
+		"prefix": [
+			"va_eventAudioClick"
+		],
+		"body": [
+			"onAudioClick (audio, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Audio click",
+		"isFileTemplate": false
+	},
+	"Va.AudioContextmenu": {
+		"prefix": [
+			"va_eventAudioContextmenu"
+		],
+		"body": [
+			"onAudioContextmenu (audio, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Audio contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.CarouselClick": {
+		"prefix": [
+			"va_eventCarouselClick"
+		],
+		"body": [
+			"onCarouselClick (carousel, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Carousel click",
+		"isFileTemplate": false
+	},
+	"Va.CarouselContextmenu": {
+		"prefix": [
+			"va_eventCarouselContextmenu"
+		],
+		"body": [
+			"onCarouselContextmenu (carousel, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Carousel contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.CarouselChange": {
+		"prefix": [
+			"va_eventCarouselChange"
+		],
+		"body": [
+			"onCarouselChange (carousel, element, index, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Carousel change",
+		"isFileTemplate": false
+	},
+	"Va.CarouselLeftButtonClick": {
+		"prefix": [
+			"va_eventLeftButtonClick"
+		],
+		"body": [
+			"onCarouselLeftButtonClick (carousel, element,  evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Carousel leftButton click",
+		"isFileTemplate": false
+	},
+	"Va.CarouselRightButtonClick": {
+		"prefix": [
+			"va_eventRightButtonClick"
+		],
+		"body": [
+			"onCarouselRightButtonClick (carousel, element,  evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Carousel rightButton click",
+		"isFileTemplate": false
+	},	
+	"Va.ListItemClick": {
+		"prefix": [
+			"va_eventListItemClick"
+		],
+		"body": [
+			"onListItemClick (listitem, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ListItem click",
+		"isFileTemplate": false
+	},
+	"Va.ListItemContextmenu": {
+		"prefix": [
+			"va_eventListItemContextmenu"
+		],
+		"body": [
+			"onListItemContextmenu (listitem, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ListItem contextmenu",
+		"isFileTemplate": false
+	},	
+	"Va.ListSelect": {
+		"prefix": [
+			"va_eventListSelect"
+		],
+		"body": [
+			"onListSelect (list, element, listItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.List select",
+		"isFileTemplate": false
+	},
+	"Va.ScrollListRender": {
+		"prefix": [
+			"va_eventScrollListRender"
+		],
+		"body": [
+			"onScrollListRender (list, element, listItem, data, index){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ScrollList render",
+		"isFileTemplate": false
+	},
+	"Va.ScrollListSelect": {
+		"prefix": [
+			"va_eventScrollListSelect"
+		],
+		"body": [
+			"onScrollListSelect (list, element, listItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ScrollList select",
+		"isFileTemplate": false
+	},
+	"Va.ScrollListPaging": {
+		"prefix": [
+			"va_eventScrollListPaging"
+		],
+		"body": [
+			"onScrollListPaging (list, element, listItem, data, index){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.ScrollList paging",
+		"isFileTemplate": false
+	},	
+	"Va.CardListSelect": {
+		"prefix": [
+			"va_eventCardListSelect"
+		],
+		"body": [
+			"onCardListSelect (list, element, listItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.CardList select",
+		"isFileTemplate": false
+	},	
+	"Va.OverflowResize": {
+		"prefix": [
+			"va_eventOverflowResize"
+		],
+		"body": [
+			"onOverflowResize (list, element, width, height, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Overflow resize",
+		"isFileTemplate": false
+	},
+	"Va.DrawerExpand": {
+		"prefix": [
+			"va_eventDrawerExpand"
+		],
+		"body": [
+			"onDrawerExpand (drawer, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Drawer expand",
+		"isFileTemplate": false
+	},
+	"Va.DrawerCollapse": {
+		"prefix": [
+			"va_eventDrawerCollapse"
+		],
+		"body": [
+			"onDrawerCollapse (drawer, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Drawer collapse",
+		"isFileTemplate": false
+	},
+	"Va.AccordionClick": {
+		"prefix": [
+			"va_eventAccordionClick"
+		],
+		"body": [
+			"onAccordionClick (accordion, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Accordion click",
+		"isFileTemplate": false
+	},
+	"Va.AccordionContextmenu": {
+		"prefix": [
+			"va_eventAccordionContextmenu"
+		],
+		"body": [
+			"onAccordionContextmenu (accordion, element, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Accordion contextmenu",
+		"isFileTemplate": false
+	},
+	"Va.TabChange": {
+		"prefix": [
+			"va_eventTabChange"
+		],
+		"body": [
+			"onTabChange (tab, element, activeIndex, childComponent,  evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tab change",
+		"isFileTemplate": false
+	},
+	"Va.TabClose": {
+		"prefix": [
+			"va_eventTabClose"
+		],
+		"body": [
+			"onTabClose (tab, element, activeIndex, childComponent,  evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tab close",
+		"isFileTemplate": false
+	},
+
+	"Va.SimpleTabChange": {
+		"prefix": [
+			"va_eventSimpleTabChange"
+		],
+		"body": [
+			"onSimpleTabChange (simpletab, element, activeIndex, childComponent,  evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SimpleTab change",
+		"isFileTemplate": false
+	},
+	"Va.SimpleTabClose": {
+		"prefix": [
+			"va_eventSimpleTabClose"
+		],
+		"body": [
+			"onSimpleTabClose (simpletab, element, activeIndex, childComponent,  evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.SimpleTab close",
+		"isFileTemplate": false
+	},		
+
+	"Va.GridBeforeEdit": {
+		"prefix": [
+			"va_eventGridBeforeEdit"
+		],
+		"body": [
+			"onGridBeforeEdit (grid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid beforeEdit",
+		"isFileTemplate": false
+	},
+	"Va.GridRowClick": {
+		"prefix": [
+			"va_eventGridRowClick"
+		],
+		"body": [
+			"onGridRowClick (grid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid rowClick",
+		"isFileTemplate": false
+	},
+	"Va.GridRowDblClick": {
+		"prefix": [
+			"va_eventGridRowDblClick"
+		],
+		"body": [
+			"onGridRowDblClick (grid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid rowDblClick",
+		"isFileTemplate": false
+	},
+	"Va.GridEdit": {
+		"prefix": [
+			"va_eventGridEdit"
+		],
+		"body": [
+			"onGridEdit (grid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid edit",
+		"isFileTemplate": false
+	},
+	"Va.GridEditRaw": {
+		"prefix": [
+			"va_eventGridEditRaw"
+		],
+		"body": [
+			"onGridEditRaw (grid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid editRaw",
+		"isFileTemplate": false
+	},	
+	"Va.GridGroupingRaw": {
+		"prefix": [
+			"va_eventGridGroupingRaw"
+		],
+		"body": [
+			"onGridGroupingRaw (grid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid groupingRaw",
+		"isFileTemplate": false
+	},
+	"Va.GridRender": {
+		"prefix": [
+			"va_eventGridRender"
+		],
+		"body": [
+			"onGridRender (grid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid render",
+		"isFileTemplate": false
+	},		
+	"Va.GridGroupingRender": {
+		"prefix": [
+			"va_eventGridGroupingRender"
+		],
+		"body": [
+			"onGridGroupingRender (grid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid groupingRender",
+		"isFileTemplate": false
+	},		
+	"Va.GridSummaryRender": {
+		"prefix": [
+			"va_eventGridSummaryRender"
+		],
+		"body": [
+			"onGridSummaryRender (grid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Grid summaryRender",
+		"isFileTemplate": false
+	},
+	"Va.TreeGridBeforeEdit": {
+		"prefix": [
+			"va_eventTreeGridBeforeEdit"
+		],
+		"body": [
+			"onTreeGridBeforeEdit (treegrid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid beforeEdit",
+		"isFileTemplate": false
+	},
+	"Va.TreeGridRowClick": {
+		"prefix": [
+			"va_eventTreeGridRowClick"
+		],
+		"body": [
+			"onTreeGridRowClick (treegrid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid rowClick",
+		"isFileTemplate": false
+	},
+	"Va.TreeGridRowDblClick": {
+		"prefix": [
+			"va_eventTreeGridRowDblClick"
+		],
+		"body": [
+			"onTreeGridRowDblClick (treegrid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid rowDblClick",
+		"isFileTemplate": false
+	},
+	"Va.TreeGridEdit": {
+		"prefix": [
+			"va_eventTreeGridEdit"
+		],
+		"body": [
+			"onTreeGridEdit (treegrid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid edit",
+		"isFileTemplate": false
+	},
+	"Va.TreeGridEditRaw": {
+		"prefix": [
+			"va_eventTreeGridEditRaw"
+		],
+		"body": [
+			"onTreeGridEditRaw (treegrid, key, value, data, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid editRaw",
+		"isFileTemplate": false
+	},	
+	"Va.TreeGridGroupingRaw": {
+		"prefix": [
+			"va_eventTreeGridGroupingRaw"
+		],
+		"body": [
+			"onTreeGridGroupingRaw (treegrid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid groupingRaw",
+		"isFileTemplate": false
+	},
+	"Va.TreeGridRender": {
+		"prefix": [
+			"va_eventTreeGridRender"
+		],
+		"body": [
+			"onTreeGridRender (treegrid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid render",
+		"isFileTemplate": false
+	},		
+	"Va.TreeGridGroupingRender": {
+		"prefix": [
+			"va_eventTreeGridGroupingRender"
+		],
+		"body": [
+			"onTreeGridGroupingRender (treegrid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid groupingRender",
+		"isFileTemplate": false
+	},		
+	"Va.TreeGridSummaryRender": {
+		"prefix": [
+			"va_eventTreeGridSummaryRender"
+		],
+		"body": [
+			"onTreeGridSummaryRender (treegrid, key, values, groupData, column, rowIndex, colIndex, row, col, cell, component){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.TreeGrid summaryRender",
+		"isFileTemplate": false
+	},	
+	"Va.PaginationNumberButton": {
+		"prefix": [
+			"va_eventPaginationNumberButtonClick"
+		],
+		"body": [
+			"onPaginationNumberButtonClick (pagination, element, page, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Pagination numberButtonClick",
+		"isFileTemplate": false
+	},
+	"Va.PaginationPreviousButton": {
+		"prefix": [
+			"va_eventPaginationPreviousButtonClick"
+		],
+		"body": [
+			"onPaginationPreviousButtonClick (pagination, element, page, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Pagination previousButtonClick",
+		"isFileTemplate": false
+	},	
+	"Va.PaginationNextButton": {
+		"prefix": [
+			"va_eventPaginationNextButtonClick"
+		],
+		"body": [
+			"onPaginationNextButtonClick (pagination, element, page, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Pagination nextButtonClick",
+		"isFileTemplate": false
+	},
+	"Va.PaginationMostPreviousButton": {
+		"prefix": [
+			"va_eventPaginationMostPreviousButtonClick"
+		],
+		"body": [
+			"onPaginationMostPreviousButtonClick (pagination, element, page, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Pagination mostPreviousButtonClick",
+		"isFileTemplate": false
+	},	
+	"Va.PaginationMostNextButton": {
+		"prefix": [
+			"va_eventPaginationMostNextButtonClick"
+		],
+		"body": [
+			"onPaginationMostNextButtonClick (pagination, element, page, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Pagination MostNextButtonClick",
+		"isFileTemplate": false
+	},
+	"Va.TreeItemClick": {
+		"prefix": [
+			"va_eventTreeItemClick"
+		],
+		"body": [
+			"onTreeItemClick (tree, element, treeItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tree itemClick",
+		"isFileTemplate": false
+	},
+	"Va.TreeItemContextmenu": {
+		"prefix": [
+			"va_eventTreeItemContextmenu"
+		],
+		"body": [
+			"onTreeItemContextmenu (tree, element, treeItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tree itemContextmenu",
+		"isFileTemplate": false
+	},		
+	"Va.TreeItemExpand": {
+		"prefix": [
+			"va_eventTreeItemExpand"
+		],
+		"body": [
+			"onTreeItemExpand (tree, element, treeItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tree itemExpand",
+		"isFileTemplate": false
+	},		
+	"Va.TreeItemCollapse": {
+		"prefix": [
+			"va_eventTreeItemCollapse"
+		],
+		"body": [
+			"onTreeItemCollapse (tree, element, treeItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tree itemCollapse",
+		"isFileTemplate": false
+	},	
+	"Va.TreeItemDragStart": {
+		"prefix": [
+			"va_eventTreeItemDragStart"
+		],
+		"body": [
+			"onTreeItemDragStart (tree, element, treeItem, data, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tree itemDragStart",
+		"isFileTemplate": false
+	},	
+	"Va.TreeItemDrop": {
+		"prefix": [
+			"va_eventTreeItemDrop"
+		],
+		"body": [
+			"onTreeItemDrop (tree, element, treeItem, data, parentItem, parentData, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tree itemDrop",
+		"isFileTemplate": false
+	},	
+	"Va.TreeItemDropInsert": {
+		"prefix": [
+			"va_eventTreeItemDropInsert"
+		],
+		"body": [
+			"onTreeItemDropInsert (tree, element, treeItem, data, beforeTreeItem, beforeData, parentItem, parentData, evt){",
+			"\t$0",
+			"}"
+		],
+		"description": "Va.Tree itemDropInsert",
+		"isFileTemplate": false
+	}	
 
 }

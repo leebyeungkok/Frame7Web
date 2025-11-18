@@ -1,13 +1,48 @@
 <html>
 
 <head>
+	<title>Frame7 Web</title>
+	<meta charset="utf-8">
+	<meta http-equiv='cache-control' content='no-cache'>
+	<meta http-equiv='expires' content='0'>
+	<meta http-equiv='pragma' content='no-cache'>
 	<script src="$scriptUri"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="$styleUri">
+	<style>
+		html {
+			height:100%;
+			padding:0px; 
+			margin:0px;
+			font-size: 10px; 
+			font-family: "Pretendard";
+		}
+		body {
+			height:100%;
+			padding:0px; 
+			margin:0px;
+			font-size: 1.7rem;
+			font-family: "Pretendard";
+		}
+		@media only screen and (max-width:600px){
+			/* mobile */
+		}
+		@media only screen and (min-width:600px){
+			/* tablet */ 
+		}
+		@media only screen and (min-width:1025px){
+			/* pc */
+		}
+		
+	</style>
 </head>
+<script>
 
+	//
+</script>
 <body>
 	<iframe id="va_iframe" src="$iframeContentUri"
-		sendbox="allow-scripts allow-popups allow-same-origin allow-forms allow-modals allow-popups-to-escape-sandbox allow-presentation allow-storage-access-by-user-activation allow-top-navigation"></iframe>
+		sandbox="allow-scripts allow-popups allow-same-origin allow-forms allow-modals allow-popups-to-escape-sandbox allow-presentation allow-storage-access-by-user-activation allow-top-navigation"></iframe>
 </body>
 
 </html>
