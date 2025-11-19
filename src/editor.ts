@@ -25,31 +25,6 @@ export function backToFile(context: vscode.ExtensionContext) {
 	}
 }
 
-/*
-const getFileList = async (path: string) => {
-	let strRootPath:string = vscode.workspace.workspaceFolders[0].uri.fsPath;
-	let list:object[] = [];
-	let obj = {list: list};
-	let seperator:string = '';
-	if(path == ''){	
-		seperator = '';
-	} else {
-		seperator = '/';
-	}
-	const uri:string = vscode.Uri.file(strRootPath + seperator + path);
-	const entries:string[] = await vscode.workspace.fs.readDirectory(uri);
-	entries.forEach(([name, type]) => {
-		const entryType = type === vscode.FileType.Directory ? 'd' : 'f';
-		if( path == '' && (name == 'assets' || name == '.vscode' ||  name == 'editor' || name == 'lib' )){
-
-		} else {
-			list.push({'parent':path, fileUri: name, type:entryType});
-		}
-	});
-	return list;
-}
-*/
-
 export class EditorPanel {
 	public readonly panel: vscode.WebviewPanel;
 	private document: vscode.TextDocument;
@@ -284,62 +259,6 @@ export class EditorPanel {
 	}
 	private async readFileList() {
 		let strFileList = '';
-		/*
-		try{
-			if (vscode.workspace.workspaceFolders) {
-				
-				//console.log('조립시작')
-
-				let path = '';
-				const loopFileList = async () => {
-					let list:object[] = [];					
-					list = await getFileList(path);
-					console.log('list', list);
-					for(let i=0; i < list.length; i++){
-						if(list[i].type == 'd'){
-							let dirName1:string = list[i].parent + '/' + list[i].fileUri;
-							console.log('dirName1', dirName1);
-							let listSub1:object[] = await getFileList(dirName1);
-							for(let j=0; j < listSub1.length; j++){
-								console.log('j', j, listSub1[j]);
-								list.push(listSub1[j]);
-								if(listSub1[j].type == 'd'){
-									let dirName2:string = listSub1[j].parent + '/' + listSub1[j].fileUri;
-									console.log('dirName2', dirName2);
-									let listSub2:object[] = await getFileList(dirName2);
-									
-									for(let k=0; k < listSub2.length; k++){
-										console.log('k', k, listSub2[k]);
-										list.push(listSub2[k])
-										if(listSub2[k].type == 'd'){
-											let dirName3:string = listSub2[k].parent + '/'  + listSub2[k].fileUri;
-											console.log('dirName3', dirName3);
-											let listSub3:object[] = await getFileList(dirName3);
-											for(let l=0; l < listSub3.length; l++){
-												console.log('l', l, listSub3[l]);
-												list.push(listSub3[l])
-											}
-										}											
-									}									
-								}								
-							}
-						}
-					}
-					//console.log('list', list);
-					let obj = {list: list};
-					this.panel.webview.postMessage({
-						type: 'update',
-						updateType: 'readFileList',
-						text: JSON.stringify(obj)
-					});
-				}
-				loopFileList();
-			}
-			} catch (error) {
-			console.log('error...................', error);
-			vscode.window.showErrorMessage(`Error getting file info: ${error}`);
-		}
-		*/
 	}
 	private writeFile(text: string) {
 		console.log('0text=>', text);
@@ -351,10 +270,8 @@ export class EditorPanel {
 		fs.writeFileSync(filePath, content, 'utf8');
 
 		var openPath = vscode.Uri.parse("file:///" + filePath); //A request file path
-		//vscode.workspace.openTextDocument(openPath).then(doc => {
-		//	vscode.window.showTextDocument(doc);
-		//});
 	}
+
 	private writeDiagramFile(text: string) {
 		console.log('1text=>', text);
 		let firstIndex = text.indexOf(':');
@@ -367,10 +284,8 @@ export class EditorPanel {
 		console.log('filePath', filePath, content);
 
 		var openPath = vscode.Uri.parse("file:///" + filePath); //A request file path
-		//vscode.workspace.openTextDocument(openPath).then(doc => {
-		//	vscode.window.showTextDocument(doc);
-		//});
 	}
+
 	private writeDiagramTemplateFile(text: string) {
 		console.log('2text=>', text);
 		let firstIndex = text.indexOf(':');
@@ -387,10 +302,8 @@ export class EditorPanel {
 		fs.writeFileSync(filePath, content, 'utf8');
 
 		var openPath = vscode.Uri.parse("file:///" + filePath); //A request file path
-		//vscode.workspace.openTextDocument(openPath).then(doc => {
-		//	vscode.window.showTextDocument(doc);
-		//});
 	}
+
 	private writeDiagramComponentFile(text: string) {
 		console.log('3text=>', text);
 		let firstIndex = text.indexOf(':');
@@ -407,10 +320,8 @@ export class EditorPanel {
 		fs.writeFileSync(filePath, content, 'utf8');
 
 		var openPath = vscode.Uri.parse("file:///" + filePath); //A request file path
-		//vscode.workspace.openTextDocument(openPath).then(doc => {
-		//	vscode.window.showTextDocument(doc);
-		//});
 	}
+	
 	private editTextDocument(text: string) {
 		const edit = new vscode.WorkspaceEdit();
 		console.log('text==>', text);
