@@ -49,14 +49,6 @@ window.addEventListener('message', e => {
 				console.error('update from extension is not recognized!');
 			}
 		}
-		else if (message.type === 'command') {
-			if(message.command === 'undo'){
-				// TODO: implement undo for iframe content
-			}
-			else{
-				console.error('command from extension is not recognized!');
-			}
-		}
 	}
 });
 

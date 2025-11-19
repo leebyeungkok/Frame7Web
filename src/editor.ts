@@ -25,11 +25,6 @@ export function backToFile(context: vscode.ExtensionContext) {
 	}
 }
 
-export function undo(context: vscode.ExtensionContext) {
-	if (EditorPanel.currentPanel) {
-		EditorPanel.currentPanel.undo();
-	}
-}
 /*
 const getFileList = async (path: string) => {
 	let strRootPath:string = vscode.workspace.workspaceFolders[0].uri.fsPath;
@@ -212,12 +207,6 @@ export class EditorPanel {
 		}
 	}
 
-	public undo(): void {
-		this.panel.webview.postMessage({
-			type: 'commmand',
-			command: 'undo',
-		})
-	}
 
 	private static createPanel(panelName: string, extensionUri: vscode.Uri): vscode.WebviewPanel {
 		const column = EditorPanel.getActiveColumn();

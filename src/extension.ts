@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { openVisualEditor, backToFile, undo } from './editor';
+import { openVisualEditor, backToFile } from './editor';
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('activated');
@@ -12,11 +12,6 @@ export function activate(context: vscode.ExtensionContext) {
 		'frame7-web.backToFile',
 		() => { backToFile(context) }
 	));
-
-	context.subscriptions.push(vscode.commands.registerCommand(
-		'undo',
-		() => { undo(context) }
-	))
 }
 
 export function deactivate() { }
