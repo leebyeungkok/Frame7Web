@@ -6,7 +6,7 @@ export function openVisualEditor(context: vscode.ExtensionContext) {
 	const editor = vscode.window.activeTextEditor;
 	if (editor) {
 
-		let panel = EditorPanel.FindEditorPanelByDocument(editor.document);
+		let panel = EditorPanel.findEditorPanelByDocument(editor.document);
 		if (panel) {
 			panel.panel.reveal();
 		}
@@ -73,6 +73,8 @@ export class EditorPanel {
 				case 'readFileList':
 					this.readFileList();
 					break;
+				case 'undoDocument':
+					this.undoDocument();
 				case 'error':
 					vscode.window.showErrorMessage(e.message);
 					break;
@@ -160,7 +162,7 @@ export class EditorPanel {
 		this.removeFromPanels();
 	}
 
-	public static FindEditorPanelByDocument(document: vscode.TextDocument) {
+	public static findEditorPanelByDocument(document: vscode.TextDocument) {
 		return this.panels.find(x => x.document === document);
 	}
 
@@ -170,15 +172,33 @@ export class EditorPanel {
 		});
 	}
 
-	public backToFile(): void {
+	private runCommandInDocument(command: string) {
+		this.backToFile().then(() => {
+			vscode.commands.executeCommand(command).then(
+				() => this.panel.reveal()
+			)
+		}
+		)
+	}
+
+	public undoDocument() {
+		this.runCommandInDocument('undo');
+	}
+
+	public backToFile(): Thenable<void> {
 		if (this.document.isClosed) {
-			vscode.workspace.openTextDocument(this.document.uri).then(e => {
+			return vscode.workspace.openTextDocument(this.document.uri).then(e => {
 				this.document = e;
-				vscode.window.showTextDocument(this.document);
+				vscode.window.showTextDocument(this.document)
 			});
 		}
 		else {
-			vscode.window.showTextDocument(this.document, EditorPanel.findDocumentPanel(this.document)?.viewColumn);
+			const opts = {
+				preserveFocus: false,
+				preview: false,
+				viewColumn: EditorPanel.findDocumentPanel(this.document)?.viewColumn
+			};
+			return vscode.window.showTextDocument(this.document, opts).then(() => { })
 		}
 	}
 
@@ -321,7 +341,7 @@ export class EditorPanel {
 
 		var openPath = vscode.Uri.parse("file:///" + filePath); //A request file path
 	}
-	
+
 	private editTextDocument(text: string) {
 		const edit = new vscode.WorkspaceEdit();
 		console.log('text==>', text);
